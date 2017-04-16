@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/card_background_color"
+    app:cardElevation="@dimen/value_2dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/value_5dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/delegateImgView"
+                android:layout_width="@dimen/clients_img_size"
+                android:layout_height="@dimen/clients_img_size"
+                android:layout_marginLeft="@dimen/value_7dp"
+                android:layout_marginRight="@dimen/value_7dp"
+                android:layout_centerVertical="true"
+                tools:src="@drawable/img_nav_header" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/delegateImgView"
+                android:layout_marginRight="@dimen/value_10dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/delegateNameView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/client_testimonial_color"
+                    android:textSize="@dimen/value_15sp"
+                    tools:text="John Doe"
+                    android:textStyle="bold"
+                    android:layout_toLeftOf="@+id/webLinkImgView"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/delegateDesignationView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/member_designation_color"
+                    android:textSize="@dimen/value_14sp"
+                    android:layout_below="@+id/delegateNameView"
+                    tools:text="Founder"
+                    android:maxLines="1" />
+
+                <ImageView
+                    android:id="@+id/webLinkImgView"
+                    android:layout_width="@dimen/testimonial_web_size"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_testimonial_web"
+                    android:layout_alignTop="@+id/delegateNameView"
+                    android:layout_alignBottom="@+id/delegateNameView"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/value_7dp"
+                    android:clickable="true" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <com.audacityit.audacity.util.QuoteTextView
+            android:id="@+id/quoteTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/delegateImgView"
+            android:layout_marginLeft="@dimen/value_7dp"
+            android:layout_marginRight="@dimen/value_7dp"
+            android:layout_marginBottom="@dimen/value_7dp"
+            android:layout_marginTop="@dimen/value_3dp"
+            android:background="@color/testimonial_comments_color"
+            android:padding="@dimen/value_10dp"
+            tools:text="@string/bummy_comments"
+            android:textSize="@dimen/value_14sp"
+            android:textColor="@color/client_comment_color"
+            android:layout_gravity="start" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

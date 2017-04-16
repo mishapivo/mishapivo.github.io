@@ -1,0 +1,59 @@
+{
+  "team": [
+    {
+      "name": "Faisal",
+      "designation": "Founder & CTO",
+      "image": "ic_member_faisal"
+    },
+    {
+      "name": "Suraiya",
+      "designation": "Founder & COO",
+      "image": "ic_member_suraiya"
+    },
+    {
+      "name": "Siddiq",
+      "designation": "Founder & CEO",
+      "image": "ic_member_siddiq"
+    },
+    {
+      "name": "Tushar",
+      "designation": "Android Engineer",
+      "image": "ic_member_tushar"
+    },
+    {
+      "name": "Tuhin",
+      "designation": "UI/UX Engineer",
+      "image": "ic_member_tuhin"
+    },
+    {
+      "name": "Tinu",
+      "designation": "QA Engineer",
+      "image": "ic_member_tinu"
+    },
+    {
+      "name": "Sourav",
+      "designation": "Android Engineer",
+      "image": "ic_member_sourav"
+    },
+    {
+      "name": "Sumon",
+      "designation": "Web Designer",
+      "image": "ic_member_sumon"
+    },
+    {
+      "name": "Shaun",
+      "designation": "UI/UX Consultant",
+      "image": "ic_member_shaun"
+    },
+    {
+      "name": "Mamun",
+      "designation": "Web Engineer",
+      "image": "ic_member_mamun"
+    },
+    {
+      "name": "Rifat",
+      "designation": "Office Admin",
+      "image": "ic_member_rifat"
+    }
+  ]
+}

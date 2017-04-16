@@ -1,0 +1,38 @@
+{
+  "methodology": {
+    "company_icon": "app_inside_logo",
+    "background_image": "img_nav_header",
+    "methodology_info": [
+      {
+        "image": "ic_methodology_1",
+        "heading": "STRATEGY & ARCHITECTURE",
+        "description": "We develop a one-page business model that captures your vision and goals, and we use it to create a minimum viable product (MVP) that we can immediately start building upon."
+      },
+      {
+        "image": "ic_methodology_2",
+        "heading": "DAILY INTERNAL BUILDS",
+        "description": "Your project manager meets with the team every day to ensure everyone is meeting goals and getting the support they need."
+      },
+      {
+        "image": "ic_methodology_3",
+        "heading": "WEEKLY DELIVERABLES",
+        "description": "The product is in your hands every week. You’ll be able to use it, provide feedback, and discuss challenges with the team."
+      },
+      {
+        "image": "ic_methodology_4",
+        "heading": "MONTHLY DELIVERABLES",
+        "description": "We keep one eye on the prize, continually working to meet milestones so we can launch the final product on time."
+      },
+      {
+        "image": "ic_methodology_5",
+        "heading": "DEDICATED PROJECT MANAGER",
+        "description": "A dedicated project manager will be responsible for your project who can speak English fluently and have complete technical understanding."
+      },
+      {
+        "image": "ic_methodology_6",
+        "heading": "GET WORK DONE",
+        "description": "As Audacity IT Solutions Limited follow five important methodology, you will not only get your work done on time but also you will save your energy and money."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <CheckedTextView
+        android:id="@+id/checkAllTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:gravity="center_vertical"
+        android:padding="@dimen/value_15dp"
+        android:text="@string/text_select_all"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/value_16sp"
+        android:layout_gravity="right" />
+
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/dialogListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

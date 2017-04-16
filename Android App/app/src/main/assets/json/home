@@ -1,0 +1,70 @@
+{
+  "projects": [
+    {
+      "name": "Amar Phonebook",
+      "image": "img_home_1",
+      "project_info": [
+        {
+          "platform": "Android",
+          "url": "http://play.google.com/store/apps/details?id=com.audacityit.amarphonebook"
+        },
+        {
+          "platform": "iOS",
+          "url": "https://itunes.apple.com/us/app/amar-phonebook-bangladeshs/id1044979290?mt=8"
+        }
+      ]
+    },
+    {
+      "name": "Colours FM",
+      "image": "img_home_2",
+      "project_info": [
+        {
+          "platform": "Android",
+          "url": "https://play.google.com/store/apps/details?id=com.audacityit.coloursfm"
+        }
+      ]
+    },
+    {
+      "name": "Monasa Learning Centre",
+      "image": "img_home_3",
+      "project_info": [
+        {
+          "platform": "Website",
+          "url": "http://www.monasalearning.com"
+        }
+      ]
+    },
+    {
+      "name": "Lock Deal",
+      "image": "img_home_4",
+      "project_info": [
+        {
+          "platform": "Website",
+          "url": "http://www.lockdealsapp.com"
+        },
+        {
+          "platform": "Android",
+          "url": "https://play.google.com/store/apps/details?id=com.audacityit.lockdeals"
+        }
+      ]
+    },
+    {
+      "name": "How I Work",
+      "image": "img_home_5",
+      "project_info": [
+        {
+          "platform": "Website",
+          "url": "http://www.howiwork.org"
+        },
+        {
+          "platform": "Android",
+          "url": "https://play.google.com/store/apps/details?id=com.audacity.howiwork"
+        },
+        {
+          "platform": "iOS",
+          "url": "https://itunes.apple.com/us/app/how-i-work/id989635514?mt=8"
+        }
+      ]
+    }
+  ]
+}

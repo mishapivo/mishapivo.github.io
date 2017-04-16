@@ -1,0 +1,25 @@
+{
+  "testimonials": [
+    {
+      "delegate_name": "Ambreen Miraly",
+      "delegate_image": "img_client_3_p",
+      "delegate_designation": "Curriculum Developer at Monasa Learning Limited",
+      "ref_url": "http://monasalearning.com/",
+      "comment": "When we first started our company we were constantly working on our image and look. We had many ideas and needed a company to help us put all of those ideas together. Audacity IT Solutions patiently worked with us to come up with a website that we love and are very proud of."
+    },
+    {
+      "delegate_name": "Cody McDowell",
+      "delegate_image": "img_client_1",
+      "delegate_designation": "CEO of Lock Deals",
+      "ref_url": "http://www.lockdealsapp.com",
+      "comment": "Audacity IT Solutions have a very “Can Do” attitude with a very professional and attention to detail quality in every bit of work they do. The quality of product they have provided for me is world class. Team was always available by phone call or skype to discuss anything I needed to and made every effort to attend to these issues as soon as they could."
+    },
+    {
+      "delegate_name": "Chinmoy Saha",
+      "delegate_image": "img_client_2",
+      "delegate_designation": "Manager at U-NEXT",
+      "ref_url": "http://video.unext.jp/",
+      "comment": "Audacity IT Solutions Ltd, UNEXT offshore team is quickly adapting to Japanese work standards which is very hard to maintain even for experienced companies. They are now maintaining an app which has 400,000 paid users. I have very high hopes for the talented engineers in Audacity IT Solutions Ltd."
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/client_row_color"
+    app:cardElevation="@dimen/value_2dp"
+    app:cardUseCompatPadding="true"
+    android:animateLayoutChanges="true">
+
+    <LinearLayout
+        android:id="@+id/clientsItemView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/value_10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/clientImgView"
+                android:layout_width="@dimen/clients_img_size"
+                android:layout_height="@dimen/clients_img_size"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/value_5dp"
+                tools:src="@drawable/img_nav_header"
+                android:layout_marginRight="@dimen/value_10dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/clientImgView"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/companyNameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Monasa Learning"
+                    android:textColor="@color/portfolio_header_text_color"
+                    android:textSize="@dimen/value_15sp"
+                    android:textStyle="bold"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:id="@+id/delegateNameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/companyNameTv"
+                    android:layout_toLeftOf="@+id/countryTag"
+                    android:layout_alignLeft="@+id/companyNameTv"
+                    android:textColor="@color/delegate_text_color"
+                    android:textSize="@dimen/value_14sp"
+                    tools:text="Amreen Ahmed Khan"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/countryTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Bangladesh"
+                    android:textSize="@dimen/value_13sp"
+                    android:textColor="@color/country_tag_size"
+                    android:layout_alignTop="@id/delegateNameTv"
+                    android:layout_alignParentRight="true"
+                    android:textAllCaps="true"
+                    android:background="@color/country_tag_color"
+                    android:padding="@dimen/value_3dp"
+                    android:shadowRadius="90"
+                    android:layout_marginLeft="@dimen/value_3dp" />
+
+                <ImageView
+                    android:id="@+id/arrowImgView"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_client_extend_arrow"
+                    android:layout_marginRight="@dimen/value_3dp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/extendedView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:paddingLeft="@dimen/value_10dp"
+            android:paddingRight="@dimen/value_10dp"
+            android:paddingTop="@dimen/value_3dp">
+
+            <View
+                android:id="@+id/headingSeparator"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/client_tag_separator_color"
+                android:layout_marginBottom="@dimen/value_5dp" />
+
+            <com.audacityit.audacity.util.TagGroup
+                android:id="@+id/tagGroup"
+                style="@style/TagGroup.Small"
+                android:layout_below="@+id/headingSeparator" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,76 @@
+{
+  "clients": [
+    {
+      "client_name": "Monasa Learning Centre",
+      "delegate_name": "Samad Miraly",
+      "country": "Bangladesh",
+      "image": "img_client_3",
+      "project_info": [
+        {
+          "platform": "Website",
+          "url": "http://www.monasalearning.com"
+        }
+      ]
+    },
+    {
+      "client_name": "Amar Phonebook",
+      "delegate_name": "Empire Group",
+      "country": "Bangladesh",
+      "image": "img_client_4",
+      "project_info": [
+        {
+          "platform": "Android",
+          "url": "play.google.com/store/apps/details?id=com.audacityit.amarphonebook"
+        },
+        {
+          "platform": "iOS",
+          "url": "https://itunes.apple.com/us/app/amar-phonebook-bangladeshs/id1044979290?mt=8"
+        }
+      ]
+    },
+    {
+      "client_name": "Colours FM",
+      "delegate_name": "ADCOMM LTD.",
+      "country": "Bangladesh",
+      "image": "img_client_5",
+      "project_info": [
+        {
+          "platform": "Android",
+          "url": "https://play.google.com/store/apps/details?id=com.audacityit.coloursfm"
+        }
+      ]
+    },
+    {
+      "client_name": "U-NEXT",
+      "delegate_name": "U-NEXT",
+      "country": "Japan",
+      "image": "img_client_6",
+      "project_info": [
+        {
+          "platform": "Android",
+          "url": "https://play.google.com/store/apps/details?id=jp.softbank.mb.animehodai"
+        },
+        {
+          "platform": "iOS",
+          "url": "https://itunes.apple.com/jp/app/anime-fang-ti/id959884819?mt=8"
+        }
+      ]
+    },
+    {
+      "client_name": "Lock Deals",
+      "delegate_name": "Cody McDowell",
+      "country": "Australia",
+      "image": "img_client_7",
+      "project_info": [
+        {
+          "platform": "Website",
+          "url": "http://www.lockdealsapp.com"
+        },
+        {
+          "platform": "Android",
+          "url": "https://play.google.com/store/apps/details?id=com.audacityit.lockdeals"
+        }
+      ]
+    }
+  ]
+}

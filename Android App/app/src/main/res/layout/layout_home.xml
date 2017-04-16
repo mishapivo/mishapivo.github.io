@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/sliderImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shadow_layer_home" />
+
+    <!--RelativeLayout
+        android:id="@+id/tagView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/value_10dp">
+
+        <com.audacityit.audacity.util.TagGroup
+            android:id="@+id/tagGroupHome"
+            style="@style/TagGroup.Large"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout-->
+
+    <TextView
+        android:id="@+id/headingTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/headingSeparator"
+        android:layout_alignLeft="@+id/headingSeparator"
+        android:textColor="@color/heading_text_color"
+        android:layout_alignParentBottom="true"
+        android:text="Demo"
+        android:textSize="@dimen/value_25sp"
+        android:padding="@dimen/value_10dp"
+        android:maxLines="2" />
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Audacity</string>
+    <string name="company_name">Audacity IT Solutions</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="nav_text_overview">Overview</string>
+    <string name="nav_text_portfolio">Portfolio</string>
+    <string name="nav_text_team">Team</string>
+    <string name="nav_text_clients">Clients</string>
+    <string name="nav_text_methodology">Methodology</string>
+    <string name="nav_text_testimonial">Testimonial</string>
+    <string name="nav_text_social">Social</string>
+    <string name="nav_text_faq">FAQ</string>
+    <string name="text_get_started">Get Started</string>
+    <string name="empty_string">\u0020</string>
+    <string name="empty_string_2">\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\\u0020\u0020\u0020\u0020\u0020\</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_text_home">Home</string>
+    <string name="text_all">All</string>
+    <string name="text_wearable">Wearable</string>
+    <string name="text_ui_ux">UI/UX</string>
+    <string name="text_web">Web</string>
+    <string name="text_ios">iOS</string>
+    <string name="text_android">Android</string>
+    <string name="text_product">Product</string>
+    <string name="text_no_project">No Projects</string>
+    <string name="text_no_project_comment">You can start work with us by click here</string>
+    <string name="text_completed">\nCompleted</string>
+    <string name="text_in_queue">\nIn Queue</string>
+    <string name="text_waiting">\nWaiting</string>
+    <string name="dummy_overview_title">Basic Info</string>
+    <string name="dummy_overview_infrastructure">Infrastructure</string>
+    <string name="dummy_overview_location">Location</string>
+    <string name="dummy_overview_body">BASIS Membership ID: G682 \nTrade License No: 020148475\nTIN:442670895657</string>
+    <string name="bummy_comments">Audacity IT Solutions have a very “Can Do” attitude with a very professional and attention to detail quality in every bit of work they do. The quality of product they have provided for me is world class.</string>
+    <string name="dummy_methodology_body">We develop a one-page business model that captures your vision and golas, and we use it to create
+    a minimum viable product (MVP) that we can immediately start building upon this.</string>
+    <string name="dummy_methodology_heading"><![CDATA[Strategy & Architecture]]></string>
+    <string name="dummy_answer">At \"Audacity IT Solutions Limited\" quality is a main priority. We do everything to ensure our customers\' satisfaction. We \"get into your head\" and develop a deep understanding of your needs, wants and expectations. The result is a exceptional product.</string>
+    <string name="dummy_question">How can I be confident of the quality and reliability ?</string>
+    <string name="text_connect_with_us">Connect with us !</string>
+    <string name="text_facebook">Facebook</string>
+    <string name="text_linked_in">Linked In</string>
+    <string name="text_twitter">Twitter</string>
+    <string name="text_youtube">Youtube</string>
+    <string name="dev_mail">founders@audacityit.com</string>
+    <string name="dev_web_page">www.audacityit.com</string>
+    <string name="dev_phone">+8801670-923581</string>
+    <string name="dev_fb">https://www.facebook.com/audacityit</string>
+    <string name="dev_linked_in">https://www.linkedin.com/company/audacity-it-solution</string>
+    <string name="dev_twitter">https://twitter.com/audacity_it_ltd</string>
+    <string name="dev_youtube">https://www.youtube.com/channel/UC9-vBIn_JticiYOP70m-mdg</string>
+    <string name="re_tap_text">Double tap to exit</string>
+    <string name="nav_text_rate">Rate this App</string>
+    <string name="get_started_heading">Let\'s start with</string>
+    <string name="text_personal_info">Personal Information</string>
+    <string name="text_person_name">Your Name</string>
+    <string name="text_person_email">Your Email</string>
+    <string name="text_person_website">Your Website</string>
+    <string name="text_project_info">About your project</string>
+    <string name="text_company_name">Company Name</string>
+    <string name="text_select_all">Select all</string>
+    <string name="admob_unit_id">ca-app-pub-4586266440196072/4661631142</string>
+</resources>

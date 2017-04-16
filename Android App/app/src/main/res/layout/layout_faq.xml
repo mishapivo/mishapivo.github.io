@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/client_row_color"
+    app:cardUseCompatPadding="true"
+    android:animateLayoutChanges="true">
+
+    <RelativeLayout
+        android:id="@+id/faqItemView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/value_10dp">
+
+        <TextView
+            android:id="@+id/questionTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/client_testimonial_color"
+            android:textSize="@dimen/value_15sp"
+            android:textStyle="bold"
+            tools:text="@string/dummy_question"
+            android:layout_marginRight="@dimen/value_5dp" />
+
+        <!--<ImageView-->
+            <!--android:id="@+id/arrowImgView"-->
+            <!--android:layout_width="12dp"-->
+            <!--android:layout_height="12dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_marginRight="@dimen/value_3dp" />-->
+
+        <RelativeLayout
+            android:id="@+id/extendedView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionTv"
+            android:background="@color/testimonial_comments_color"
+            android:layout_marginTop="@dimen/value_7dp">
+
+            <View
+                android:id="@+id/faqBar"
+                android:layout_width="@dimen/value_3dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/answerTextView"
+                android:layout_alignBottom="@+id/answerTextView"
+                android:background="@color/faq_bar_color" />
+
+            <TextView
+                android:id="@+id/answerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/clientImgView"
+                android:layout_toRightOf="@+id/faqBar"
+                android:padding="@dimen/value_10dp"
+                tools:text="@string/dummy_answer"
+                android:textSize="@dimen/value_14sp"
+                android:lineSpacingExtra="@dimen/value_3dp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

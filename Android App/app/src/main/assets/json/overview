@@ -1,0 +1,44 @@
+{
+  "overview": {
+    "company_icon": "ic_overview_company",
+    "background_image": "img_overview_parallax",
+    "company_name": "Audacity IT Solutions Ltd.",
+    "company_tag": "Best mobile apps development company in Bangladesh",
+    "counter_info": [
+      {
+        "number": "20+",
+        "text": "Completed"
+      },
+      {
+        "number": "3",
+        "text": "Developing"
+      },
+      {
+        "number": "10+",
+        "text": "In Queue"
+      }
+    ],
+    "basic_info": [
+      {
+        "title": "BASIC INFO",
+        "body": "BASIS Membership ID : G682 \nTrade License No: 02048475 \nTIN : 442670895657",
+        "image": "ic_overview_basic"
+      },
+      {
+        "title": "SKILL",
+        "body": "Android App\niOS App\nWearable App\nWebsite Design & Development\nUI/UX Design",
+        "image": "ic_overview_skill"
+      },
+      {
+        "title": "INFRASTRUCTURE",
+        "body": "Total number of HR (Full-time) : 12 \nTotal number of HR (Part-time) : 4 \nInternet connectivity : Broadband \nBandwidth : 8Mbps \nOffice Space : 2080 sqft",
+        "image": "ic_overview_infrastructure"
+      },
+      {
+        "title": "LOCATION",
+        "body": "House: 20, Plot No-1/A, J-Block, Baridhara Residential Area, Dhaka 1212.",
+        "image": "ic_overview_location"
+      }
+    ]
+  }
+}

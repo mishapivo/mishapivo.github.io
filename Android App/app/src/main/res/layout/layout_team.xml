@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/value_15dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/memberImgView"
+        android:layout_width="@dimen/profile_img_width"
+        android:layout_height="@dimen/profile_img_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/value_5dp"
+        tools:src="@drawable/ic_member_faisal" />
+
+    <TextView
+        android:id="@+id/memberNameView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/member_name_color"
+        android:textSize="@dimen/value_15sp"
+        tools:text="Faisal" />
+
+    <com.audacityit.audacity.util.CustomTextView
+        android:id="@+id/memberDesignationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="@color/member_designation_color"
+        android:textSize="@dimen/value_13sp"
+        tools:text="Founder" />
+
+</LinearLayout>

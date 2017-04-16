@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_nav_home"
+            android:title="@string/nav_text_home" />
+        <item
+            android:id="@+id/nav_overview"
+            android:icon="@drawable/ic_nav_overview"
+            android:title="@string/nav_text_overview" />
+        <item
+            android:id="@+id/nav_portfolio"
+            android:icon="@drawable/ic_nav_portfolio"
+            android:title="@string/nav_text_portfolio" />
+        <item
+            android:id="@+id/nav_team"
+            android:icon="@drawable/ic_nav_team"
+            android:title="@string/nav_text_team" />
+        <item
+            android:id="@+id/nav_client"
+            android:icon="@drawable/ic_nav_client"
+            android:title="@string/nav_text_clients" />
+        <item
+            android:id="@+id/nav_testimonial"
+            android:icon="@drawable/ic_nav_testimonial"
+            android:title="@string/nav_text_testimonial" />
+        <item
+            android:id="@+id/nav_methodology"
+            android:icon="@drawable/ic_nav_methodology"
+            android:title="@string/nav_text_methodology" />
+        <item
+            android:id="@+id/nav_social"
+            android:icon="@drawable/ic_nav_social"
+            android:title="@string/nav_text_social" />
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_nav_faq"
+            android:title="@string/nav_text_faq" />
+        <item
+            android:id="@+id/nav_rate"
+            android:checkable="false"
+            android:icon="@drawable/ic_nav_rate"
+            android:title="@string/nav_text_rate" />
+    </group>
+
+</menu>

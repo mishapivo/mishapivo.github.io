@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noContentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:visibility="visible">
+
+    <TextView
+        android:id="@+id/noProject_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_no_project"
+        android:textSize="@dimen/value_20sp"
+        android:layout_marginTop="-40dp"
+        android:paddingBottom="@dimen/value_10dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/commentTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/value_16sp"
+        android:padding="@dimen/value_5dp"
+        android:text="@string/text_no_project_comment"
+        android:layout_below="@+id/noProject_tv"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnGetStarted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_get_started"
+        android:textAllCaps="false"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/commentTv"
+        android:textSize="@dimen/value_20sp"
+        android:textColor="@color/heading_text_color"
+        android:background="@color/get_started_btn_bg_color"
+        android:layout_marginTop="@dimen/value_20dp"
+        android:paddingLeft="@dimen/value_20dp"
+        android:paddingRight="@dimen/value_20dp" />
+
+</RelativeLayout>

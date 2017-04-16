@@ -1,0 +1,33 @@
+{
+  "filter": {
+    "filter_icon": "img_nav_header",
+    "menu_color": "#00A8E2",
+    "menu_pressed_color": "#BBDEFB",
+    "options": [
+      {
+        "title": "Wearable",
+        "image": "ic_fab_wearable"
+      },
+      {
+        "title": "UI/UX",
+        "image": "ic_fab_ui_ux"
+      },
+      {
+        "title": "Website",
+        "image": "ic_fab_web"
+      },
+      {
+        "title": "iOS",
+        "image": "ic_fab_ios"
+      },
+      {
+        "title": "Android",
+        "image": "ic_fab_android"
+      },
+      {
+        "title": "Product",
+        "image": "ic_fab_product"
+      }
+    ]
+  }
+}

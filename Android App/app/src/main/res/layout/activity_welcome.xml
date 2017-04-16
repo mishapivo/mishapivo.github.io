@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.WelcomeActivity">
+
+    <ImageView
+        android:id="@+id/splashImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLoader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3b3f46"
+        android:visibility="gone">
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/progressBar"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            style="@style/SpinKitView.CubeGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:SpinKit_Color="#05c7ff" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeError"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/errorImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_error"/>
+            <TextView
+                android:id="@+id/textError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_below="@+id/errorImg"
+                android:text="Something wrong!"
+                android:textSize="@dimen/value_20sp"/>
+            <TextView
+                android:id="@+id/textTryAgn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textError"
+                android:layout_marginTop="5dp"
+                android:text="Sorry! Please try later."
+                android:textSize="@dimen/value_16sp"/>
+            <Button
+                android:id="@+id/bntError"
+                android:layout_width="@dimen/retry_button_width"
+                android:layout_height="@dimen/retry_button_height"
+                android:layout_marginTop="@dimen/value_50dp"
+                android:layout_below="@+id/textTryAgn"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btn_no_internet"
+                android:textStyle="bold"
+                android:textSize="@dimen/value_20sp"
+                android:text="Retry"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeNoInternet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/noInternetImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/value_20dp"
+                android:src="@drawable/img_no_internet"/>
+            <TextView
+                android:id="@+id/textNoInternet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/noInternetImg"
+                android:textStyle="bold"
+                android:text="No Internet"
+                android:textSize="@dimen/value_20sp"/>
+            <TextView
+                android:id="@+id/textTry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textNoInternet"
+                android:layout_marginTop="5dp"
+                android:text="Please check your internet connection"
+                android:textSize="@dimen/value_16sp"/>
+            <Button
+                android:id="@+id/bntRetry"
+                android:layout_width="@dimen/retry_button_width"
+                android:layout_height="@dimen/retry_button_height"
+                android:layout_marginTop="@dimen/value_50dp"
+                android:layout_below="@+id/textTry"
+                android:textColor="@color/cardview_light_background"
+                android:background="@drawable/btn_no_internet"
+                android:textStyle="bold"
+                android:textSize="@dimen/value_20sp"
+                android:text="Retry"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

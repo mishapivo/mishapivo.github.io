@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/adMob">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true"
+            android:descendantFocusability="blocksDescendants" >
+
+            <ImageView
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_social_chat"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_connect_with_us"
+                android:textSize="@dimen/value_20sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/value_12dp"
+                android:layout_marginBottom="@dimen/value_20dp"
+                android:textColor="@color/connect_text_color" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvSocial"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/value_50dp"
+                android:layout_marginRight="@dimen/value_50dp" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adMob"
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="visible"
+        android:background="@color/toolbarColor"
+        ads:adUnitId="@string/admob_unit_id"
+        ads:adSize="BANNER"/>
+
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/methodologyItemIcon"
+        android:layout_width="@dimen/overview_icon_size"
+        android:layout_height="@dimen/overview_icon_size"
+        android:layout_marginRight="@dimen/value_15dp"
+        tool:src="@drawable/ic_overview_basic" />
+
+    <TextView
+        android:id="@+id/methodologyItemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/methodologyItemIcon"
+        tool:text="@string/dummy_overview_title"
+        android:textSize="@dimen/value_15sp"
+        android:textStyle="bold"
+        android:textColor="@color/overview_item_heading_color"
+        android:layout_alignTop="@+id/overviewItemIcon"
+        android:layout_alignBottom="@+id/overviewItemIcon"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:textAllCaps="true"
+        android:layout_marginRight="@dimen/value_10dp" />
+
+    <TextView
+        android:id="@+id/methodologyItemBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/methodologyItemTitle"
+        tool:text="@string/dummy_methodology_body"
+        android:textSize="@dimen/value_15sp"
+        android:layout_alignLeft="@+id/methodologyItemTitle"
+        android:layout_alignRight="@+id/methodologyItemTitle"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="@dimen/value_5dp" />
+
+</RelativeLayout>

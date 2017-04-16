@@ -1,0 +1,85 @@
+{
+  "projects": [
+    {
+      "name": "Amar Phonebook",
+      "image": "img_portfolio_1",
+      "platforms": [
+        "Android",
+        "iOS",
+        "UI/UX"
+      ]
+    },
+    {
+      "name": "Colours FM",
+      "image": "img_portfolio_2",
+      "platforms": [
+        "Android",
+        "UI/UX"
+      ]
+    },
+    {
+      "name": "Monasa Learning Centre",
+      "image": "img_portfolio_3",
+      "platforms": [
+        "Website",
+        "UI/UX"
+      ]
+    },
+    {
+      "name": "Lock Deal",
+      "image": "img_portfolio_4",
+      "platforms": [
+        "Website",
+        "Android",
+        "UI/UX"
+      ]
+    },
+    {
+      "name": "How I Work",
+      "image": "img_portfolio_5",
+      "platforms": [
+        "Product",
+        "Website",
+        "Android",
+        "iOS",
+        "UI/UX"
+      ]
+    },
+    {
+      "name": "Finder",
+      "image": "img_portfolio_6",
+      "platforms": [
+        "Product",
+        "Android",
+        "UI/UX"
+      ]
+    },
+    {
+      "name": "Company Profile",
+      "image": "img_portfolio_7",
+      "platforms": [
+        "Product",
+        "Website",
+        "Android",
+        "UI/UX"
+      ]
+    },
+    {
+      "name": "U-NEXT",
+      "image": "img_portfolio_8",
+      "platforms": [
+        "Android",
+        "iOS"
+      ]
+    },
+    {
+      "name": "Deshi Deal",
+      "image": "img_portfolio_9",
+      "platforms": [
+        "Product",
+        "Android",
+        "UI/UX"
+      ]
+    }
+  ]
+}

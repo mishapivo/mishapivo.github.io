@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="ga_sessionTimeout">300</integer>
+    <bool name="ga_autoActivityTracking">true</bool>
+    <string name="ga_trackingId">UA-71809234-1</string>
+    <string name="ga_sampleFrequency">100.0</string>
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+    <screenName name="com.audacityit.audacity.activity.WelcomeActivity">Welcome Screen</screenName>
+    <screenName name="com.audacityit.audacity.activity.HomeActivity">Home Screen</screenName>
+    <screenName name="com.audacityit.audacity.fragments.ClientsFragment">Clients Screen</screenName>
+    <screenName name="com.audacityit.audacity.fragments.FaqFragment">Faq Screen</screenName>
+    <screenName name="com.audacityit.audacity.fragments.HomeFragment">Home Screen</screenName>
+    <screenName name="com.audacityit.audacity.fragments.MethodologyFragment">Methodology Screen
+    </screenName>
+    <screenName name="com.audacityit.audacity.fragments.OverViewFragment">Overview Screen
+    </screenName>
+    <screenName name="com.audacityit.audacity.fragments.PortfolioFragment">Portfolio Screen
+    </screenName>
+    <screenName name="com.audacityit.audacity.fragments.SocialFragment">Social Screen</screenName>
+    <screenName name="com.audacityit.audacity.fragments.TeamFragment">Team Screen</screenName>
+    <screenName name="com.audacityit.audacity.fragments.TestimonialFragment">Testimonial Screen
+    </screenName>
+</resources>
