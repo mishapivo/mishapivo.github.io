@@ -2,3 +2,4 @@ theme: jekyll-theme-cayman
 title: Welcome to mishapivo homepage!
 description: Feel free to bookmark this to keep an eye on my project updates!
 highlighter: rouge
+encoding: bom|utf-8
