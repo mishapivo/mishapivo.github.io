@@ -2,13 +2,13 @@
 title: A blog about MISHAPIVO dolor sit amet
 description: A blog about MISHAPIVO dolor sit amet
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://mishapivogithub.io" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+url: "https://mishapivo.github.io" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
 # User settings
-username: Lorem Ipsum
-user_description: Anon Developer at Lorem Ipsum Dolor
-user_title: Anon Developer
-email: anon@anon.com
+username: mishapivo
+user_description: Mikhail Pivovarenko at User Description Dolor
+user_title: Mikhail Pivovarenko
+email: mishapivo@gmail.com
 twitter_username: mishapivo
 github_username:  mishapivo
 gplus_username:  mishapivo
