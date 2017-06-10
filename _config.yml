@@ -1,12 +1,12 @@
 # Site settings
-title: A blog about MISHAPIVO dolor sit amet
-description: A blog about MISHAPIVO dolor sit amet
+title: Блог Михаила Пивоваренко.
+description: Сайт-портфолио Михаила Пивоваренко.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://mishapivo.github.io" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+url: "https://mishapivo.github.io" # the base hostname & protocol for your site e.g. http://mishapivo.github.io
 
 # User settings
 username: mishapivo
-user_description: Mikhail Pivovarenko at User Description Dolor
+user_description: Фрилансер Mikhail Pivovarenko
 user_title: Mikhail Pivovarenko
 email: mishapivo@gmail.com
 twitter_username: mishapivo
