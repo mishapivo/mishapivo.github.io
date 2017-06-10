@@ -2,9 +2,9 @@
 
 ![Screenshot](screenshot.png)
 
-This is a simple and minimalist template for Jekyll designed for developers that want to write blog posts but don't want to care about frontend stuff.
+Это простой и минималистский шаблон для Jekyll, предназначенный для разработчиков, которые хотят писать сообщения в блогах, но не хотят заботиться о внешнем виде.
 
-The Theme features:
+Особенности:
 
 - Gulp
 - Stylus (Jeet, Rupture, Kouto Swiss)
@@ -112,6 +112,5 @@ If you liked my work, buy me a coffee <3
 This theme is free and open source software, distributed under the The MIT License. So feel free to use this Jekyll theme on your site without linking back to me or using a disclaimer.
 
 If you’d like to give me credit somewhere on your blog or tweet a shout out to [@willian_justen](https://twitter.com/willian_justen), that would be pretty sweet.
-
 
 
