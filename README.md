@@ -1,5 +1,7 @@
 ## [Mikhail Pivovarenko](http://mishapivo.github.io)
 
+[![Join the chat at https://gitter.im/mishapivo-github-io/Lobby](https://badges.gitter.im/mishapivo-github-io/Lobby.svg)](https://gitter.im/mishapivo-github-io/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ![Screenshot](screenshot.png)
 
 Это простой и минималистский шаблон для Jekyll, предназначенный для разработчиков, которые хотят писать сообщения в блогах, но не хотят заботиться о внешнем виде.
