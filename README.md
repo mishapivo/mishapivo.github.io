@@ -32,24 +32,24 @@
 6. Прочтите приведенную ниже документацию для дальнейших указателей настройки и документации.
 7. **Не забудьте скомпилировать ваши файлы с помощью Gulp.**
 
-## Персональные настройки и настройки сайта.
+## Перс. настройки и настройки сайта.
 
 Вы должны заполнить некоторую информацию на `_config.yml`, чтобы настроить свой сайт.
 
 ```
-# Site settings
+# Настройки сайта
 description: Блог о ....
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "" # поддомен сайта, например: /blog/
 url: "http://localhost:3000" # the base hostname & protocol for your site 
 
-# User settings
+# Персональные настройки
 username: Lorem Ipsum
 user_description: Anon Developer at Lorem Ipsum Dolor
 user_title: Anon Developer
-email: anon@anon.com
-twitter_username: lorem_ipsum
-github_username:  lorem_ipsum
-gplus_username:  lorem_ipsum
+email: mishapivo@gmail.com
+twitter_username: mishapivo
+github_username:  mishapivo
+gplus_username:  mishapivo
 disqus_username: lorem_ipsum
 ```
 
@@ -57,19 +57,19 @@ disqus_username: lorem_ipsum
 
 ## Color customization
 
-All color variables are in `src/styl/variable`. To change the main color, just set the new value at `main` assignment. Another colors are for texts and the code background color.
+Все цветовые переменные находятся в `src / style / variable`. Чтобы изменить основной цвет, просто установите новое значение в `main`. Другие цвета предназначены для текстов и цвета фона кода.
 
-## Creating posts
+## Создание поста
 
-You can use the `initpost.sh` to create your new posts. Just follow the command:
+Вы можете использовать `initpost.sh` для создания новых сообщений. Просто выполните команду:
 
 ```
 ./initpost.sh -c Post Title
 ```
 
-The new file will be created at `_posts` with this format `date-title.md`.
+Новый файл будет создан в `_posts` с этим форматом` date-title.md`.
 
-## Front-matter 
+## Предисловие
 
 Когда вы создаете новое сообщение, вам нужно заполнить информацию о постах в передней части, следуя этому примеру:
 
@@ -112,4 +112,3 @@ twitter_text: 'How to install and use this template'
 Эта тема - бесплатное программное обеспечение с открытым исходным кодом, распространяемое по лицензии MIT. Поэтому не стесняйтесь использовать эту тему Jekyll на своем сайте, не связывая её со мной и без какой либо ответственности с моей стороны.
 
 If you’d like to give me credit somewhere on your blog or tweet a shout out to [@willian_justen](https://twitter.com/willian_justen), that would be pretty sweet.
-
