@@ -1,12 +1,22 @@
 # Site settings
+<<<<<<< HEAD
 title: Mikhail Pivovarenko - Personal Blog
 description: A blog about Mikhail Pivovarenko
+=======
+title: Блог Михаила Пивоваренко.
+description: Сайт-портфолио Михаила Пивоваренко.
+>>>>>>> origin/master
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://mishapivogithub.io" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+url: "https://mishapivo.github.io" # the base hostname & protocol for your site e.g. http://mishapivo.github.io
 
 # User settings
+<<<<<<< HEAD
 username: My Backstage
 user_description: Anon Developer at Lorem Ipsum Dolor
+=======
+username: mishapivo
+user_description: Фрилансер Mikhail Pivovarenko
+>>>>>>> origin/master
 user_title: Mikhail Pivovarenko
 email: mishapivo@gmail.com
 twitter_username: mishapivo
