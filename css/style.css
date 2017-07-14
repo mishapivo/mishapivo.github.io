@@ -1,31 +1,31 @@
 /**
 *
-* ### Contents ###
+* ### Содержание | Contents ###
 * 
-* 01 - General Styles
-* 02 - Buttons
-* 03 - Forms
-* 04 - Alerts
-* 05 - Progress Bar
-* 06 - Header
-* 07 - Social Icons
-* 08 - Sections
-* 09 - Widgets
-* 10 - Signature
-* 11 - Services
-* 12 - Experience
-* 13 - Testimonials
-* 14 - Education
-* 15 - Icon Box
-* 16 - Portfolio
-* 17 - Blog
-* 18 - Error Page
+* 01 - Основные стили 		| General Styles
+* 02 - Кнопки 				| Buttons
+* 03 - Формы 				| Forms
+* 04 - Оповещения 			| Alerts
+* 05 - Шкала прогресса 		| Progress Bar
+* 06 - Шапка сайта			| Header
+* 07 - Социальные иконки 	| Social Icons
+* 08 - Разделы				| Sections
+* 09 - Виджеты 				| Widgets
+* 10 - Подпись				| Signature
+* 11 - Сервисы 				| Services
+* 12 - Опыт					| Experience
+* 13 - Отзывы	 			| Testimonials
+* 14 - Образование			| Education
+* 15 - Набор иконок 		| Icon Box
+* 16 - Портфолио 			| Portfolio
+* 17 - Блог					| Blog
+* 18 - Страница 404			| Error Page
 * 
 **/
 
 
 /* ==========================================================================
-   01 - General Styles
+   01 - Основные стили | General Styles
    ========================================================================== */
 @import url(//fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 @import url(//fonts.googleapis.com/css?family=Raleway:400,500);
@@ -267,7 +267,7 @@ h3.small-margin-bottom {
 }
 
 /* ==========================================================================
-   02 - Buttons
+   02 - Кнопки | Buttons
    ========================================================================== */
 .button {
 	font-weight: 400;
@@ -464,7 +464,7 @@ span{
 }
 
 /* ==========================================================================
-   03 - Forms
+   03 - Формы | Forms
    ========================================================================== */
 input:not([type=submit]):not([type=file]), select, textarea {
 	border: none;
@@ -490,7 +490,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   04 - Alerts
+   04 - Оповещения | Alerts
    ========================================================================== */
 .alert {
 	box-shadow: 0 2px 2px rgba(0,0,0,.3);
@@ -518,7 +518,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   05 - Progress Bar
+   05 - Шкала прогресса | Progress Bar
    ========================================================================== */
 .progress {
 	height: 8px;
@@ -621,7 +621,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   06 - Header
+   06 - Шапка сайта | Header
    ========================================================================== */
 .header {
 	box-shadow: 0 1px 6px rgba(0,0,0,.3);
@@ -1013,7 +1013,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   07 - Social Icons
+   07 - Социальные иконки | Social Icons
    ========================================================================== */
 .social-icon {
 	display: inline-block;
@@ -1040,7 +1040,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   08 - Sections
+   08 - Разделы | Sections
    ========================================================================== */
 .sections {
 	display: block;
@@ -1133,7 +1133,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   09 - Widgets
+   09 - Виджеты | Widgets
    ========================================================================== */
 .instagram {
 	text-align: center;
@@ -1145,7 +1145,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   10 - Signature
+   10 - Подпись | Signature
    ========================================================================== */
 .signature {
 	position: relative;
@@ -1157,7 +1157,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   11 - Services
+   11 - Сервисы | Services
    ========================================================================== */
 .icon-box-service {
     text-align: center;
@@ -1191,7 +1191,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   12 - Experience
+   12 - Опыт | Experience
    ========================================================================== */
 .experience-block {
 	position: relative;
@@ -1298,7 +1298,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   13 - Testimonials
+   13 - Отзывы | Testimonials
    ========================================================================== */
 .testimonial-slider {
 	text-align: center;
@@ -1351,7 +1351,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   14 - Education
+   14 - Образование | Education
    ========================================================================== */
 .education-block {
     position: relative;
@@ -1482,7 +1482,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   15 - Icon Box
+   15 - Набор иконок | Icon Box
    ========================================================================== */
 .icon-box {
 	text-align: center;
@@ -1515,7 +1515,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   16 - Portfolio
+   16 - Портфолио | Portfolio
    ========================================================================== */
 .portfolio-wrapper {
 	position: relative;
@@ -1682,7 +1682,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   17 - Blog
+   17 - Блог | Blog
    ========================================================================== */
 .post-box .post-title a,
 .post-single .post-title a {
@@ -2092,7 +2092,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   18 - Error Page
+   18 - Страница 404 | Error Page
    ========================================================================== */
 .error-page {
 	text-align: center;
