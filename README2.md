@@ -22,6 +22,26 @@
 - Color Customization
 - Info Customization
 
+## Цветовая палитра |  Color Palette.
+
+
+## Шрифт | Fonts
+
+
+## Аватар | Avatar
+
+
+## Имя | Name
+
+## Слоган | Миссия | Ценности | Вижин | Цели
+
+
+## Элементы
+
+## CSS файл - Styleguide
+
+
+
 ## Basic Setup
 
 1. [Install Jekyll](http://jekyllrb.com)
