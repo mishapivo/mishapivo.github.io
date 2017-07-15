@@ -1,4 +1,4 @@
-## [Mikhail Pivovarenko - Blog & CV](http://mishapivo.github.io)
+## [@mishapivo - Blog & CV](http://mishapivo.github.io)
 
 ![Screenshot](screenshot.png)
 
