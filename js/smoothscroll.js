@@ -12,30 +12,23 @@ var version = '1.4.13',
       exclude: [],
       excludeWithin:[],
       offset: 0,
-
       // one of 'top' or 'left'
       direction: 'left',
-
       // jQuery set of elements you wish to scroll (for $.smoothScroll).
       //  if null (default), $('html, body').firstScrollable() is used.
       scrollElement: $('div.sections'),
-
       // only use if you want to override default behavior
       scrollTarget: null,
-
       // fn(opts) function to be called before scrolling occurs.
       // `this` is the element(s) being scrolled
       beforeScroll: function() {},
-
       // fn(opts) function to be called after scrolling occurs.
       // `this` is the triggering element
       afterScroll: function() {},
       easing: 'swing',
       speed: 400,
-
       // coefficient for "auto" speed
       autoCoefficent: 2,
-
       // $.fn.smoothScroll only: whether to prevent the default click action
       preventDefault: true
     },
@@ -51,7 +44,8 @@ var version = '1.4.13',
         var el = $(this);
         if ( el[dir]() > 0 ) {
           scrollable.push(this);
-        } else {
+        }
+        else {
           // if scroll(Top|Left) === 0, nudge the element 1px and see if it moves
           el[dir](1);
           scrolled = el[dir]() > 0;
@@ -129,7 +123,8 @@ $.fn.extend({
 
       if ( !thisOpts.scrollTarget && (!hostMatch || !pathMatch || !thisHash) ) {
         include = false;
-      } else {
+      }
+      else {
         while (include && elCounter < exclude.length) {
           if ($link.is(escapeSelector(exclude[elCounter++]))) {
             include = false;
@@ -141,13 +136,10 @@ $.fn.extend({
           }
         }
       }
-
       if ( include ) {
-
         if ( thisOpts.preventDefault ) {
           event.preventDefault();
         }
-
         $.extend( clickOpts, thisOpts, {
           scrollTarget: thisOpts.scrollTarget || thisHash,
           link: link
@@ -175,7 +167,8 @@ $.smoothScroll = function(options, px) {
   if (typeof options === 'number') {
     opts = $.extend({link: null}, $.fn.smoothScroll.defaults, optionOverrides);
     scrollTargetOffset = options;
-  } else {
+  }
+  else {
     opts = $.extend({link: null}, $.fn.smoothScroll.defaults, options || {}, optionOverrides);
     if (opts.scrollElement) {
       offPos = 'position';
@@ -192,7 +185,8 @@ $.smoothScroll = function(options, px) {
     if ( !(/^(?:HTML|BODY)$/).test($scroller[0].nodeName) ) {
       scrollerOffset = $scroller[scrollDir]();
     }
-  } else {
+  }
+  else {
     $scroller = $('html, body').firstScrollable(opts.direction);
   }
 

@@ -56,9 +56,11 @@
 				});
 				$({
 					value: 0
-				}).animate({
+				}).animate(
+				    {
 					value: myVal
-				}, {
+				},
+                    {
 					duration: 1000,
 					easing: 'swing',
 					step: function() {
@@ -176,10 +178,12 @@
 			if (url == count) {
 				$('.section-nav a.forward').addClass('disabled');
 				$('.section-nav a.backward').removeClass('disabled');
-			} else if (url == 1) {
+			}
+			else if (url == 1) {
 				$('.section-nav a.backward').addClass('disabled');
 				$('.section-nav a.forward').removeClass('disabled');
-			} else {
+			}
+			else {
 				$('.section-nav a.forward').removeClass('disabled');
 				$('.section-nav a.backward').removeClass('disabled');
 			}
@@ -189,16 +193,20 @@
 				url = url+1;
 				$this.attr({ href: '#section' + url });
 				$this.parent().attr({ class: 'section' + url });
-			} else if ($type == 'backward') {
+			}
+			else if ($type == 'backward') {
 				url = url-1;
 				$this.attr({ href: '#section' + url });
 				$this.parent().attr({ class: 'section' + url });
-			} else if ($type == 'mainNav') {
+			}
+			else if ($type == 'mainNav') {
 				var sectionNum = $this.attr('href');
 				sectionNum = sectionNum.replace( /[^\d.]/g, '' );
 				sectionNum = parseInt(sectionNum, 10);
 				url = sectionNum;
-			} else if ($type == 'link') {
+			}
+			else if ($type == 'link')
+			{
 				var sectionNum = hash;
 				sectionNum = sectionNum.replace( /[^\d.]/g, '' );
 				sectionNum = parseInt(sectionNum, 10);
@@ -261,7 +269,8 @@
 		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 		if( !emailReg.test( $validate_email ) ) {
 			return false;
-		} else {
+		}
+		else {
 			return true;
 		}
 	}
@@ -294,13 +303,15 @@
 					contactForm.find('.contact-error').fadeIn();
 				}
 			});
-		} else if (!validateEmail(contactForm.find('.contact-email').val()) && contactForm.find('.contact-email').val().length !== 0 && contactForm.find('.contact-name').val().length !== 0 && contactForm.find('.contact-message').val().length !== 0) {
+		}
+		else if (!validateEmail(contactForm.find('.contact-email').val()) && contactForm.find('.contact-email').val().length !== 0 && contactForm.find('.contact-name').val().length !== 0 && contactForm.find('.contact-message').val().length !== 0) {
 			contactForm.find('.contact-error').fadeOut();
 			contactForm.find('.contact-success').fadeOut();
 			contactForm.find('.contact-loading').fadeOut();
 			contactForm.find('.contact-error').find('.message').html('Please enter a valid email.');
 			contactForm.find('.contact-error').fadeIn();
-		} else {
+		}
+		else {
 			contactForm.find('.contact-error').fadeOut();
 			contactForm.find('.contact-success').fadeOut();
 			contactForm.find('.contact-loading').fadeOut();
@@ -332,7 +343,8 @@
 				title: 'Mikhail',
 				icon: './images/marker.png'
 			});
-		} else {
+		}
+		else {
 			return false;
 		}
 	}

@@ -24,9 +24,9 @@
 **/
 
 
-/* ==========================================================================
-   01 - Основные стили | General Styles
-   ========================================================================== */
+/* ==================================================================================================
+   								  01 - Основные стили | General Styles
+   ================================================================================================== */
 @import url(//fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 @import url(//fonts.googleapis.com/css?family=Raleway:400,500);
 @import url(//fonts.googleapis.com/css?family=Lato:700);
@@ -44,7 +44,6 @@ body {
 p {
 	margin-bottom: 24px;
 }
-
 blockquote {
     color: #737881;
     font-size: 18px;
@@ -54,7 +53,6 @@ blockquote {
     position: relative;
     margin: 0 0 20px 0;
 }
-
 blockquote:before {
     font-family: "FontAwesome";
     content: '\f10e';
@@ -66,22 +64,18 @@ blockquote:before {
     margin-bottom: 10px;
     color: #1ecf6a;
 }
-
 blockquote p {
     margin-bottom: 20px;
 }
-
 blockquote > p:last-child {
     margin-bottom: 0;
 }
-
 blockquote cite {
     padding-top: 20px;
     margin-top: 25px;
     position: relative;
     display: block;
 }
-
 blockquote cite:before {
     content: '';
     width: 64px;
@@ -92,14 +86,12 @@ blockquote cite:before {
     top: 0;
     margin-left: -32px;
 }
-
 blockquote cite,
 blockquote small {
     color: #303030;
     font-size: 14px;
     font-weight: 600;
 }
-
 blockquote em,
 blockquote i,
 blockquote cite {
@@ -266,9 +258,9 @@ h3.small-margin-bottom {
     .info ul.info-list li .inf{width:100%;border-right:0;border-left:1px solid #efefef;border-bottom:1px solid #efefef;}
 }
 
-/* ==========================================================================
-   02 - Кнопки | Buttons
-   ========================================================================== */
+/* ==================================================================================================
+   								      02 - Кнопки | Buttons
+   ================================================================================================== */
 .button {
 	font-weight: 400;
 	text-transform: uppercase;
@@ -305,7 +297,7 @@ h3.small-margin-bottom {
 		margin-right: 0;
 	}
 }
-/*==========  Solid Button  ==========*/
+/* ================================ Кнопка Solid | Solid Button ================================== */
 .solid-button {
 	font-size: 15px;
 	line-height: 26px;
@@ -435,7 +427,7 @@ span{
         margin-top: 28px;
     }
 }
-/*==========  Link Button  ==========*/
+/* ================================== Кнопка ссылки | Link Button ================================ */
 .link-button {
 	font-size: 13px;
 	line-height: 32px;
@@ -446,7 +438,7 @@ span{
 .link-button.white {
 	color: #fff;
 }
-/*==========  Action Button  ==========*/
+/* ============================== Кнопка действия | Action Button ================================ */
 .action-button {
 	background: #33d685;
 	color: #fff;
@@ -463,9 +455,9 @@ span{
 	box-shadow: 0 6px 18px rgba(0,0,0,.13), 0 9px 15px rgba(0,0,0,.3);
 }
 
-/* ==========================================================================
-   03 - Формы | Forms
-   ========================================================================== */
+/* ==================================================================================================
+   								      03 - Формы | Forms
+   ================================================================================================== */
 input:not([type=submit]):not([type=file]), select, textarea {
 	border: none;
 	border-bottom: 1px solid #d7d7d7;
@@ -489,9 +481,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	text-align: left;
 }
 
-/* ==========================================================================
-   04 - Оповещения | Alerts
-   ========================================================================== */
+/* ==================================================================================================
+   								      04 - Оповещения | Alerts
+   ================================================================================================== */
 .alert {
 	box-shadow: 0 2px 2px rgba(0,0,0,.3);
 	border: none;
@@ -517,9 +509,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	color: #fff;
 }
 
-/* ==========================================================================
-   05 - Шкала прогресса | Progress Bar
-   ========================================================================== */
+/* ==================================================================================================
+   								  05 - Шкала прогресса | Progress Bar
+   ================================================================================================== */
 .progress {
 	height: 8px;
 	margin-bottom: 36px;
@@ -620,9 +612,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	}
 }
 
-/* ==========================================================================
-   06 - Шапка сайта | Header
-   ========================================================================== */
+/* ==================================================================================================
+   									     06 - Шапка сайта | Header
+   ================================================================================================== */
 .header {
 	box-shadow: 0 1px 6px rgba(0,0,0,.3);
 	text-transform: uppercase;
@@ -798,7 +790,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 		right: 12px;
 	}
 }
-/*==========  Popup  ==========*/
+/* ================================= Всплывающее меню | Popup ==================================== */
 .popup, .slide-out-popup {
 	background: #fff;
 	box-shadow: 0 0 8px rgba(0,0,0,.3);
@@ -855,7 +847,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 		right: 15px;
 	}
 }
-/*==========  Search  ==========*/
+/* ========================================= Поиск | Search ====================================== */
 .search-overlay {
 	background: #33d685;
 	background: rgba(26, 255, 156, 0.7);
@@ -918,7 +910,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 .search input:focus {
 	border-color: #fff !important;
 }
-/*==========  Slide Out  ==========*/
+/* ====================================== Слайдер | Slide Out ==================================== */
 .slide-out-overlay {
 	position: fixed;
 	top: 0;
@@ -1012,9 +1004,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	}
 }
 
-/* ==========================================================================
-   07 - Социальные иконки | Social Icons
-   ========================================================================== */
+/* ==================================================================================================
+   									07 - Социальные иконки | Social Icons
+   ================================================================================================== */
 .social-icon {
 	display: inline-block;
 	width: 42px;
@@ -1039,9 +1031,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	color: #fff;
 }
 
-/* ==========================================================================
-   08 - Разделы | Sections
-   ========================================================================== */
+/* ==================================================================================================
+   											08 - Разделы | Sections
+   ================================================================================================== */
 .sections {
 	display: block;
 	height: auto;
@@ -1132,9 +1124,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	}
 }
 
-/* ==========================================================================
-   09 - Виджеты | Widgets
-   ========================================================================== */
+/* ==================================================================================================
+   											09 - Виджеты | Widgets
+   ================================================================================================== */
 .instagram {
 	text-align: center;
 }
@@ -1144,9 +1136,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	padding: 6px;
 }
 
-/* ==========================================================================
-   10 - Подпись | Signature
-   ========================================================================== */
+/* ==================================================================================================
+   											10 - Подпись | Signature
+   ================================================================================================== */
 .signature {
 	position: relative;
 	margin: 0 18px;
@@ -1156,9 +1148,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     width: 125px;
 }
 
-/* ==========================================================================
-   11 - Сервисы | Services
-   ========================================================================== */
+/* ==================================================================================================
+   											11 - Сервисы | Services
+   ================================================================================================== */
 .icon-box-service {
     text-align: center;
     margin: 12px 0;
@@ -1190,9 +1182,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     margin-bottom: 9px;
 }
 
-/* ==========================================================================
-   12 - Опыт | Experience
-   ========================================================================== */
+/* ==================================================================================================
+   											12 - Опыт | Experience
+   ================================================================================================== */
 .experience-block {
 	position: relative;
 	padding-bottom: 55px;
@@ -1297,9 +1289,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	}
 }
 
-/* ==========================================================================
-   13 - Отзывы | Testimonials
-   ========================================================================== */
+/* ==================================================================================================
+   											13 - Отзывы | Testimonials
+   ================================================================================================== */
 .testimonial-slider {
 	text-align: center;
 	font-weight: 500;
@@ -1350,9 +1342,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	margin-top: 0;
 }
 
-/* ==========================================================================
-   14 - Образование | Education
-   ========================================================================== */
+/* ==================================================================================================
+   											14 - Образование | Education
+   ================================================================================================== */
 .education-block {
     position: relative;
     padding-bottom: 55px;
@@ -1481,9 +1473,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     }
 }
 
-/* ==========================================================================
-   15 - Набор иконок | Icon Box
-   ========================================================================== */
+/* ==================================================================================================
+   											15 - Набор иконок | Icon Box
+   ================================================================================================== */
 .icon-box {
 	text-align: center;
 	margin: 12px 0;
@@ -1514,9 +1506,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	margin-bottom: 0;
 }
 
-/* ==========================================================================
-   16 - Портфолио | Portfolio
-   ========================================================================== */
+/* ==================================================================================================
+   											16 - Портфолио | Portfolio
+   ================================================================================================== */
 .portfolio-wrapper {
 	position: relative;
 }
@@ -1614,8 +1606,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 		padding: 20px;
 	}
 }
-/* Single
-   ========================================================================== */
+/* ============================================= Один | Single ===================================== */
 .portfolio-button-row {
 	margin-top: 7px;
 	margin-bottom: 36px;
@@ -1681,9 +1672,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 	}
 }
 
-/* ==========================================================================
-   17 - Блог | Blog
-   ========================================================================== */
+/* ==================================================================================================
+   											17 - Блог | Blog
+   ================================================================================================== */
 .post-box .post-title a,
 .post-single .post-title a {
     color: inherit;
@@ -1693,12 +1684,10 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     -o-transition: color 0.15s linear 0s;
     transition: color 0.15s linear 0s;
 }
-
 .post-box .post-title a:hover,
 .post-single .post-title a:hover {
     text-decoration: none;
 }
-
 .post-box {
     position: relative;
     background-color: #fff;
@@ -1716,7 +1705,6 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     padding: 15px 15px 1px 15px;
     margin: 10px;
 }
-
 .post-box .post-type-icon {
     left: 20px;
     bottom: 20px;
@@ -1734,25 +1722,21 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     border-radius: 5px;
     padding: 10px;
 }
-
 .post-box .post-type-icon .icon {
     color: #fff;
     line-height: 44px;
     font-size: 20px;
     display: block;
 }
-
 .post-box .post-media {
     overflow: hidden;
     position: relative;
     background-color: #2c3340;
 }
-
 .post-box .post-media.no-media {
     padding-top: 58px;
     background-color: #f7f7f7;
 }
-
 .post-box .post-media img {
     width: 100%;
     height: auto;
@@ -1765,11 +1749,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
 }
-
 .post-box .post-data {
     padding: 25px 25px 1px 25px;
 }
-
 .post-box .post-image img {
     -webkit-transition: opacity 1s, transform 1s;
     -moz-transition: opacity 1s, transform 1s;
@@ -1777,15 +1759,12 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     -o-transition: opacity 1s, transform 1s;
     transition: opacity 1s, transform 1s;
 }
-
 .post-box:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.19), 0 6px 10px rgba(0, 0, 0, 0.23);
 }
-
 .post-box:hover .post-slider img {
     opacity: 1;
 }
-
 .post-box:hover .post-image img {
     opacity: 1;
     -webkit-transform: scale3d(1.1, 1.1, 1);
@@ -1794,7 +1773,6 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     -o-transform: scale3d(1.1, 1.1, 1);
     transform: scale3d(1.1, 1.1, 1);
 }
-
 .blog-sidebar {
     background: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,.25);
@@ -1802,50 +1780,41 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     border-bottom: 1px solid #d8d8d8;
     margin-bottom: 17px;
 }
-
 .blog-sidebar .author .title {
     font-weight: bold;
     margin-bottom: 5px;
 }
-
 .post-media-info {
     width: 78px;
     float: left;
     margin: 0 20px 20px 0;
 }
-
 .post-title-info{
     margin-left: 20px;
 }
-
 .post-media-info img {
     display: block;
     margin-top: 2px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
-
 .post-info a {
     font-size: 11px;
     color: #777;
 }
-
 .post-info a:before{
     font-family: "FontAwesome";
     content: '\f0e6';
     margin-right: 5px;
 }
-
 .blog-load-more {
     text-align: center;
     margin-top: 48px;
 }
-
 @media (min-width: 669px) {
     .section-blog .row:last-child .post-box {
         margin-bottom: 0;
     }
 }
-
 @media (max-width: 668px) {
     .blog .col-xs-6,
     .section-blog .col-xs-6 {
@@ -1856,8 +1825,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
         margin-bottom: 0;
     }
 }
-/* Single Post
-   ========================================================================== */
+/* ================================ Одиночная публикация | Single Post ============================== */
 .single-blog-post .blog-header .content {
 	background: #fff;
 	padding: 40px;
@@ -2004,8 +1972,7 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 		width: 100%;
 	}
 }
-/* Comments
-   ========================================================================== */
+/* ==================================== Комментарии | Comments =================================== */
 .blog-post-comments {
 	margin-top: 64px;
 }
@@ -2082,7 +2049,6 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
 .leave-comment .inner label {
 	color: #232323;
 }
-
 @media all and (max-width: 768px) {
     .comment .reply {
         top: 10px;
@@ -2091,9 +2057,9 @@ input:not([type=submit]):not([type=file]):focus, select:focus, textarea:focus {
     }
 }
 
-/* ==========================================================================
-   18 - Страница 404 | Error Page
-   ========================================================================== */
+/* ==================================================================================================
+   											18 - Страница 404 | Error Page
+   ================================================================================================== */
 .error-page {
 	text-align: center;
 	padding: 72px 0;

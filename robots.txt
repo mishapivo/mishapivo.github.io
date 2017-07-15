@@ -1,3 +1,64 @@
 # robotstxt.org/
 
 User-agent: *
+Disallow: /file.html
+Disallow: /papka/
+
+User-agent: Yandex
+Disallow: /cgi-bin
+Host: www.site.ru
+
+User-agent: *
+Disallow: /cgi-bin
+
+
+
+User-agent: Googlebot
+Disallow: /cgi-bin
+Sitemap: /sitemap.xml
+
+
+
+User-agent: Googlebot-Image
+Disallow: /file.html
+Disallow: /papka/
+
+
+
+User-agent: Googlebot-Mobile
+Disallow: /file.html
+Disallow: /papka/
+
+
+
+User-agent: *
+Disallow: /cgi-bin
+Disallow: /wp-admin
+Disallow: /wp-includes
+Disallow: /wp-content/plugins
+Disallow: /wp-content/cache
+Disallow: /wp-content/themes
+Disallow: /trackback
+Disallow: */trackback
+Disallow: */*/trackback
+Disallow: */*/feed/*/
+Disallow: */feed
+Disallow: /*?*
+Disallow: /tag
+User-agent: Yandex
+Disallow: /cgi-bin
+Disallow: /wp-admin
+Disallow: /wp-includes
+Disallow: /wp-content/plugins
+Disallow: /wp-content/cache
+Disallow: /wp-content/themes
+Disallow: /trackback
+Disallow: */trackback
+Disallow: */*/trackback
+Disallow: */*/feed/*/
+Disallow: */feed
+Disallow: /*?*
+Disallow: /tag
+Host: mishapivo.github.io
+Sitemap: https://mishapivo.github.io/sitemap.xml.gz
+Sitemap: https://mishapivo.github.io/sitemap.xml
