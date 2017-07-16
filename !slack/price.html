@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="en-US" >
+
+<head>
+
+
+    <script>
+        window.ts_endpoint_url = "https:\/\/slack.com\/beacon\/timing";
+
+        (function(e) {
+            var n=Date.now?Date.now():+new Date,r=e.performance||{},t=[],a={},i=function(e,n){for(var r=0,a=t.length,i=[];a>r;r++)t[r][e]==n&&i.push(t[r]);return i},o=function(e,n){for(var r,a=t.length;a--;)r=t[a],r.entryType!=e||void 0!==n&&r.name!=n||t.splice(a,1)};r.now||(r.now=r.webkitNow||r.mozNow||r.msNow||function(){return(Date.now?Date.now():+new Date)-n}),r.mark||(r.mark=r.webkitMark||function(e){var n={name:e,entryType:"mark",startTime:r.now(),duration:0};t.push(n),a[e]=n}),r.measure||(r.measure=r.webkitMeasure||function(e,n,r){n=a[n].startTime,r=a[r].startTime,t.push({name:e,entryType:"measure",startTime:n,duration:r-n})}),r.getEntriesByType||(r.getEntriesByType=r.webkitGetEntriesByType||function(e){return i("entryType",e)}),r.getEntriesByName||(r.getEntriesByName=r.webkitGetEntriesByName||function(e){return i("name",e)}),r.clearMarks||(r.clearMarks=r.webkitClearMarks||function(e){o("mark",e)}),r.clearMeasures||(r.clearMeasures=r.webkitClearMeasures||function(e){o("measure",e)}),e.performance=r,"function"==typeof define&&(define.amd||define.ajs)&&define("performance",[],function(){return r}) // eslint-disable-line
+        })(window);
+
+    </script>
+    <script>
+
+        ;(function() {
+            'use strict';
+
+
+            window.TSMark = function(mark_label) {
+                if (!window.performance || !window.performance.mark) return;
+                performance.mark(mark_label);
+            };
+            window.TSMark('start_load');
+
+
+            window.TSMeasureAndBeacon = function(measure_label, start_mark_label) {
+                if (start_mark_label === 'start_nav' && window.performance && window.performance.timing) {
+                    window.TSBeacon(measure_label, (new Date()).getTime() - performance.timing.navigationStart);
+                    return;
+                }
+                if (!window.performance || !window.performance.mark || !window.performance.measure) return;
+                performance.mark(start_mark_label + '_end');
+                try {
+                    performance.measure(measure_label, start_mark_label, start_mark_label + '_end');
+                    window.TSBeacon(measure_label, performance.getEntriesByName(measure_label)[0].duration);
+                } catch (e) {
+
+                }
+            };
+
+
+            if ('sendBeacon' in navigator) {
+                window.TSBeacon = function(label, value) {
+                    var endpoint_url = window.ts_endpoint_url || 'https://slack.com/beacon/timing';
+                    navigator.sendBeacon(endpoint_url + '?data=' + encodeURIComponent(label + ':' + value), '');
+                };
+            } else {
+                window.TSBeacon = function(label, value) {
+                    var endpoint_url = window.ts_endpoint_url || 'https://slack.com/beacon/timing';
+                    (new Image()).src = endpoint_url + '?data=' + encodeURIComponent(label + ':' + value);
+                };
+            }
+        })();
+    </script>
+
+
+    <script>
+        window.TSMark('step_load');
+    </script>	<noscript><meta http-equiv="refresh" content="0; URL=/pricing/slack-for-teams?nojsmode=1" /></noscript>
+    <script type="text/javascript">
+        if(self!==top)window.document.write("\u003Cstyle>body * {display:none !important;}\u003C\/style>\u003Ca href=\"#\" onclick="+
+            "\"top.location.href=window.location.href\" style=\"display:block !important;padding:10px\">Go to Slack.com\u003C\/a>");
+
+        (function() {
+            var timer;
+            if (self !== top) {
+                timer = window.setInterval(function() {
+                    if (window.$) {
+                        try {
+                            $('#page').remove();
+                            $('#client-ui').remove();
+                            window.TS = null;
+                            window.clearInterval(timer);
+                        } catch(e) {}
+                    }
+                }, 200);
+            }
+        }());
+
+    </script>
+
+    <script>(function() {
+        'use strict';
+
+        window.callSlackAPIUnauthed = function(method, args, callback) {
+            var timestamp = Date.now() / 1000;
+            var version = (window.TS && TS.boot_data && TS.boot_data.version_uid) ? TS.boot_data.version_uid.substring(0, 8) : 'noversion';
+            var url = '/api/' + method + '?_x_id=' + version + '-' + timestamp;
+            var req = new XMLHttpRequest();
+
+            req.onreadystatechange = function() {
+                if (req.readyState == 4) {
+                    req.onreadystatechange = null;
+                    var obj;
+
+                    if (req.status == 200 || req.status == 429) {
+                        try {
+                            obj = JSON.parse(req.responseText);
+                        } catch (err) {
+                            TS.console.warn(8675309, 'unable to do anything with api rsp');
+                        }
+                    }
+
+                    obj = obj || {
+                            ok: false,
+                        };
+
+                    callback(obj.ok, obj, args);
+                }
+            };
+
+            var async = true;
+            req.open('POST', url, async);
+
+            var form_data = new FormData();
+            var has_data = false;
+            Object.keys(args).forEach(function(k) {
+                if (k[0] === '_') return;
+                form_data.append(k, args[k]);
+                has_data = true;
+            });
+
+            if (has_data) {
+                req.send(form_data);
+            } else {
+                req.send();
+            }
+        };
+    })();
+    </script>
+
+    <script type="text/javascript" src="https://a.slack-edge.com/bv1-1/webpack.manifest.bb5271996e2d0b293ce2.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+
+
+
+    <script>
+    if (window.location.host == 'slack.com' && window.location.search.indexOf('story') < 0) {
+        document.cookie = '__cvo_skip_doc=' + escape(document.URL) + '|' + escape(document.referrer) + ';path=/';
+    }
+    </script>
+
+
+    <script type="text/javascript">
+
+        try {
+            if(window.location.hash && !window.location.hash.match(/^(#?[a-zA-Z0-9_]*)$/)) {
+                window.location.hash = '';
+            }
+        } catch(e) {}
+
+    </script>
+
+    <script type="text/javascript">
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'gtm.start': Date.now(),
+            'event' : 'gtm.js',
+
+        });
+        var firstScript = document.getElementsByTagName('script')[0];
+        var thisScript = document.createElement('script');
+        thisScript.async = true;
+        thisScript.src = '//www.googletagmanager.com/gtm.js?id=GTM-KH2LPK';
+        firstScript.parentNode.insertBefore(thisScript, firstScript);
+
+        /* Once page is loaded, attach events */
+        document.addEventListener("DOMContentLoaded", function(e) {
+            var gtmDataLayer = window.dataLayer || [];
+            var gtmTags = document.querySelectorAll('*[data-gtm-click]');
+            var gtmClickHandler = function(c) {
+                var gtm_events = this.getAttribute('data-gtm-click');
+                if(!gtm_events) return;
+                var gtm_events_arr = gtm_events.split(",");
+                for(var e=0; e < gtm_events_arr.length; e++) {
+                    var ev = gtm_events_arr[e].trim();
+                    gtmDataLayer.push({ 'event': ev });
+                }
+            };
+            gtmTags.forEach(function(elem) {
+                elem.addEventListener('click', gtmClickHandler);
+            });
+        });
+
+
+        (function(e,c,b,f,d,g,a){e.SlackBeaconObject=d;
+            e[d]=e[d]||function(){(e[d].q=e[d].q||[]).push([1*new Date(),arguments])};
+            e[d].l=1*new Date();g=c.createElement(b);a=c.getElementsByTagName(b)[0];
+            g.async=1;g.src=f;a.parentNode.insertBefore(g,a)
+        })(window,document,"script","https://a.slack-edge.com/bv1-1/slack_beacon.9555f5e382af865f618b.min.js","sb");
+        sb('set', 'token', '3307f436963e02d4f9eb85ce5159744c');
+
+        sb('track', 'pageview');
+
+
+        function track(a) {
+            if(window.ga) ga('send','event','web', a);
+            if(window.sb) sb('track', a);
+        }
+
+
+    </script>
+
+
+    <meta name="referrer" content="no-referrer">
+    <meta name="superfish" content="nofish">
+
+    <script type="text/javascript">
+
+
+
+        var TS_last_log_date = null;
+        var TSMakeLogDate = function() {
+            var date = new Date();
+
+            var y = date.getFullYear();
+            var mo = date.getMonth()+1;
+            var d = date.getDate();
+
+            var time = {
+                h: date.getHours(),
+                mi: date.getMinutes(),
+                s: date.getSeconds(),
+                ms: date.getMilliseconds()
+            };
+
+            Object.keys(time).map(function(moment, index) {
+                if (moment == 'ms') {
+                    if (time[moment] < 10) {
+                        time[moment] = time[moment]+'00';
+                    } else if (time[moment] < 100) {
+                        time[moment] = time[moment]+'0';
+                    }
+                } else if (time[moment] < 10) {
+                    time[moment] = '0' + time[moment];
+                }
+            });
+
+            var str = y + '/' + mo + '/' + d + ' ' + time.h + ':' + time.mi + ':' + time.s + '.' + time.ms;
+            if (TS_last_log_date) {
+                var diff = date-TS_last_log_date;
+                //str+= ' ('+diff+'ms)';
+            }
+            TS_last_log_date = date;
+            return str+' ';
+        }
+
+        var parseDeepLinkRequest = function(code) {
+            var m = code.match(/"id":"([CDG][A-Z0-9]{8})"/);
+            var id = m ? m[1] : null;
+
+            m = code.match(/"team":"(T[A-Z0-9]{8})"/);
+            var team = m ? m[1] : null;
+
+            m = code.match(/"message":"([0-9]+\.[0-9]+)"/);
+            var message = m ? m[1] : null;
+
+            return { id: id, team: team, message: message };
+        }
+
+        if ('rendererEvalAsync' in window) {
+            var origRendererEvalAsync = window.rendererEvalAsync;
+            window.rendererEvalAsync = function(blob) {
+                try {
+                    var data = JSON.parse(decodeURIComponent(atob(blob)));
+                    if (data.code.match(/handleDeepLink/)) {
+                        var request = parseDeepLinkRequest(data.code);
+                        if (!request.id || !request.team || !request.message) return;
+
+                        request.cmd = 'channel';
+                        TSSSB.handleDeepLinkWithArgs(JSON.stringify(request));
+                        return;
+                    } else {
+                        origRendererEvalAsync(blob);
+                    }
+                } catch (e) {
+                }
+            }
+        }
+    </script>
+
+
+
+    <script type="text/javascript">
+
+        var TSSSB = {
+            call: function() {
+                return false;
+            }
+        };
+
+    </script>
+    <script>TSSSB.env = (function() {
+        'use strict';
+
+        var v = {
+            win_ssb_version: null,
+            win_ssb_version_minor: null,
+            mac_ssb_version: null,
+            mac_ssb_version_minor: null,
+            mac_ssb_build: null,
+            lin_ssb_version: null,
+            lin_ssb_version_minor: null,
+            desktop_app_version: null,
+        };
+
+        var is_win = (navigator.appVersion.indexOf('Windows') !== -1);
+        var is_lin = (navigator.appVersion.indexOf('Linux') !== -1);
+        var is_mac = !!(navigator.userAgent.match(/(OS X)/g));
+
+        if (navigator.userAgent.match(/(Slack_SSB)/g) || navigator.userAgent.match(/(Slack_WINSSB)/g)) {
+
+            var parts = navigator.userAgent.split('/');
+            var version_str = parts[parts.length - 1];
+            var version_float = parseFloat(version_str);
+            var version_parts = version_str.split('.');
+            var version_minor = (version_parts.length == 3) ? parseInt(version_parts[2], 10) : 0;
+
+            if (navigator.userAgent.match(/(AtomShell)/g)) {
+
+                if (is_lin) {
+                    v.lin_ssb_version = version_float;
+                    v.lin_ssb_version_minor = version_minor;
+                } else if (is_win) {
+                    v.win_ssb_version = version_float;
+                    v.win_ssb_version_minor = version_minor;
+                } else if (is_mac) {
+                    v.mac_ssb_version = version_float;
+                    v.mac_ssb_version_minor = version_minor;
+                }
+
+                if (version_parts.length >= 3) {
+                    v.desktop_app_version = {
+                        major: parseInt(version_parts[0], 10),
+                        minor: parseInt(version_parts[1], 10),
+                        patch: parseInt(version_parts[2], 10),
+                    };
+                }
+            } else {
+
+                v.mac_ssb_version = version_float;
+                v.mac_ssb_version_minor = version_minor;
+
+
+
+                var app_ver = window.macgap && macgap.app && macgap.app.buildVersion && macgap.app.buildVersion();
+                var matches = String(app_ver).match(/(?:\()(.*)(?:\))/);
+                v.mac_ssb_build = (matches && matches.length == 2) ? parseInt(matches[1] || 0, 10) : 0;
+            }
+        }
+
+        return v;
+    })();
+    </script>
+
+
+    <script type="text/javascript">
+
+        window.addEventListener('load', function() {
+            var was_TS = window.TS;
+            delete window.TS;
+            if (was_TS) window.TS = was_TS;
+        });
+    </script>
+    <title>Pricing | Slack</title>
+    <meta name="author" content="Slack">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- output_css "core" -->
+    <link href="https://a.slack-edge.com/1f595/style/rollup-plastic.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+
+    <!-- output_css "before_file_pages" -->
+
+    <!-- output_css "file_pages" -->
+
+
+    <!-- output_css "regular" -->
+    <link href="https://a.slack-edge.com/b42d0c/style/pricing.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/ff8e5/style/pricing_ent.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/71e98e/style/pricing_matrix.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/e8d0e/style/twitter_carousel.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/48cb/style/pricing_tab_menu.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/b003/style/libs/lato-2-compressed.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/0b8a3/style/sticky_nav.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/19253/style/footer.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+    <link href="https://a.slack-edge.com/ce5d2/style/_helpers.css" rel="stylesheet" type="text/css" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)">
+
+
+
+
+
+
+
+
+    <meta property="og:type" 	content="website"/>
+    <meta property="og:site_name" 	content="Slack"/>
+    <meta property="og:image" 	content="https://a.slack-edge.com/bc86/marketing/img/meta/slack_hash_128.png"/>
+    <meta property="og:title" 	content="Slack Pricing Guide"/>
+    <meta property="og:description" content="Slack brings all your communication together in one place. It’s real-time messaging, archiving and search for modern teams."/>
+
+
+
+    <link id="favicon" rel="shortcut icon" href="https://a.slack-edge.com/bc86/marketing/img/meta/favicon-32.png" sizes="16x16 32x32 48x48" type="image/png" />
+
+    <link rel="icon" href="https://a.slack-edge.com/bc86/marketing/img/meta/app-256.png" sizes="256x256" type="image/png" />
+
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://a.slack-edge.com/bc86/marketing/img/meta/ios-152.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://a.slack-edge.com/bc86/marketing/img/meta/ios-144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://a.slack-edge.com/bc86/marketing/img/meta/ios-120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://a.slack-edge.com/bc86/marketing/img/meta/ios-114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://a.slack-edge.com/bc86/marketing/img/meta/ios-72.png" />
+    <link rel="apple-touch-icon-precomposed" href="https://a.slack-edge.com/bc86/marketing/img/meta/ios-57.png" />
+
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="https://a.slack-edge.com/bc86/marketing/img/meta/app-144.png" />
+
+    <!--[if lt IE 9]>
+    <script src="https://a.slack-edge.com/bv1-1/html5shiv.e7cd7843b61b9c027447.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="	pricing_matrix	full_bleed				">
+
+
+
+
+
+
+
+
+
+
+
+
+<nav class="top persistent">
+
+
+    <a href="https://slack.com/" class="logo" data-qa="logo" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=logo" aria-label="Slack homepage"></a>
+
+
+
+    <ul>
+        <li><a  href="https://slack.com/is" data-qa="product" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_product">Product</a></li>
+        <li><a  href="https://slack.com/pricing" data-qa="pricing" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_pricing">Pricing</a></li>				<li><a  href="https://get.slack.help/hc/en-us" data-qa="support" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_support">Support</a></li>
+
+        <li class= "mobile_btn download_slack"><a  href="/get" data-qa="download_slack" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_download">Download Slack</a></li>									<li><a data-gtm-click="SignUp,optout_nav_create_team" href="https://slack.com/create" class="" data-qa="create_team" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_create_team">Create a new team</a></li>					<li><a  href="https://slack.com/get-started" data-gtm-click="optout_nav_find_team" data-qa="find_team" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_find_team">Find your team</a></li>
+        <li class="sign_in hide_on_mobile"><a data-gtm-click="optout_nav_signin" href="https://slack.com/signin" class="btn_sticky btn_filled" data-qa="sign_in" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_sign_in">Sign in</a></li>
+        <li class="mobile_btn mobile_menu_btn">
+            <a href="#" class="btn_sticky" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_mobile_menu_btn">Menu</a>
+        </li>
+    </ul>
+
+
+</nav>
+
+
+
+<nav class="mobile_menu loading menu_scroll" aria-hidden="true">
+    <div class="mobile_menu_wrapper">
+        <div class="mobile_menu_header">
+            <a href="https://slack.com/" class="logo" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_logo"></a>
+            <a href="#" class="close" aria-label="close" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_menu_close"><ts-icon class="ts_icon ts_icon_times"></ts-icon></a>
+        </div>
+        <ul>
+            <li><a  href="https://slack.com/is" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_product">Product</a></li>
+            <li><a  href="https://slack.com/pricing" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_pricing">Pricing</a></li>				<li><a  href="https://get.slack.help/hc/en-us" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_support">Support</a></li>
+            <li><a  href="/get" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_download">Download <span class="optional_desktop_nav_message">the Slack app</span></a></li>
+        </ul>
+
+        <ul class="mobile_menu_footer">
+
+            <li><a href="https://slack.com/signin" data-gtm-click="optout_nav_signin" target="_blank" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_sign_in"><ts-icon class="ts_icon small float_none team_icon ts_icon_plus default signup_icon"></ts-icon> <span class="switcher_label">Sign in</span></a></li>
+
+            <li><a data-gtm-click="SignUp,optout_nav_create_team" href="https://slack.com/create" class="" target="_blank" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=nav_create_team"><ts-icon class="ts_icon small float_none team_icon ts_icon_slack_pillow default signup_icon"></ts-icon> <span class="switcher_label">Create a new team</span></a></li>			</ul>
+    </div>
+</nav>
+
+
+<div id="page" >
+
+    <div id="page_contents" data-qa="page_contents" class="">
+
+
+        <section class="intro" id="top">
+            <div class="col margin_auto float_none align_center bottom_padding no_right_padding pricing_header">
+                <h1 class="large align_center">Pricing Guide</h1>
+            </div>
+        </section>
+
+
+
+
+        <div class="pricing_tabs">
+
+
+            <div id="tabmenu" class="tab_menu">
+                <h1 class="align_center show_on_mobile pricing_page_header">Pricing Guide</h1>
+                <button class="tab tab_teams active" href="#slack-for-teams" data-tab-name="tab_teams" >
+                    <h2 class="pricing_tab_menu_header">Slack <span class="mobile_break">for Teams</span></h2>
+                </button>
+                <button class="tab tab_enterprise " href="#enterprise-grid" data-tab-name="tab_enterprise" >
+                    <h2 class="pricing_tab_menu_header">Slack <span class="mobile_break">Enterprise Grid</span></h2>
+                </button>
+            </div>
+
+            <div class="tab_panels">
+
+
+                <div class="panel panel_teams active" id="slack-for-teams">
+
+
+                    <span class="italic show_on_mobile pricing_tab_menu_user_count">3—1,000 users</span>
+
+                    <h4 class="pricing_card_header">Slack for Teams is a <span class="pricing_card_header_callout">single workspace</span> for your small- to medium-sized company&nbsp;or&nbsp;team.</h4>
+
+
+
+                    <div class="plan_matrix">
+
+                        <table cellpadding="0" cellspacing="0" class="show_on_desktop">
+                            <tr class="matrix_ctas">
+                                <td class="feature_col">
+                                    <div class="our_plans">Our Plans</div>
+                                </td>
+
+                                <td class="plan" data-plan-name="lite">
+
+                                    <div class="plan_card cursor_pointer ">
+                                        <h3 class="plan_type"></i>Free</h3>											<span class="localized_plan_price" data-qa="free_plan_price">€0</span>										<span class="plan_price_details">&nbsp;</span>
+                                    </div>
+
+                                    <button data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_logged_out,trigger=pricing_page" class="btn detail_button create_free" data-qa="create_team_free">Create New Team</button>
+                                </td>
+
+                                <td class="plan" data-plan-name="standard">
+
+                                    <div class="plan_card cursor_pointer ">
+                                        <h3 class="plan_type">Standard</h3>
+
+
+                                        <span class="localized_plan_price" data-qa="std_plan_price_annual">€6.25</span>
+                                        <span class="plan_price_details">per active user, per month</span>
+                                    </div>
+
+                                    <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_standard_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                        <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                        <input type="hidden" name="step" value="2" />
+                                        <input type="hidden" name="product" value="std_y" />
+                                        <button type="submit" class="btn detail_button buy_std">Buy Standard</button>
+                                    </form>
+
+                                </td>
+
+                                <td class="plan" data-plan-name="plus">
+
+                                    <div class="plan_card cursor_pointer ">
+                                        <h3 class="plan_type">Plus</h3>
+
+                                        <span class="localized_plan_price" data-qa="plus_plan_price_annual">€11.75</span>
+                                        <span class="plan_price_details">per active user, per month</span>
+                                    </div>
+
+                                    <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_plus_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                        <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                        <input type="hidden" name="step" value="2" />
+                                        <input type="hidden" name="product" value="plus_y" />
+                                        <button type="submit" class="btn detail_button buy_plus">Buy Plus</button>
+                                    </form>
+
+                                </td>
+
+                            </tr>
+
+                            <tr class="no_top_sep">
+                                <td></td>
+                                <td>
+                                    <p>For small teams, or anyone who wants to try Slack for an unlimited period of time.</p>
+                                </td>
+                                <td>
+                                    <p>For teams and businesses ready to make Slack the hub for their projects and communications.</p>
+                                </td>
+                                <td>
+                                    <p>For teams needing guaranteed uptime on a single Slack team, SSO, and Compliance Exports.</p>
+                                </td>
+                            </tr>
+
+                            <tr class="no_top_sep">
+                                <td></td>
+                                <td>
+                                    <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_lite_learn_more_link,trigger=pricing_page" href="/is" class="plan_price_details learn_more_free">Learn more</a>
+                                </td>
+                                <td>
+                                    <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_standard_learn_more_link,trigger=pricing_page" href="/pricing/standard" class="learn_more_std plan_price_details">Learn more</a>
+                                </td>
+                                <td>
+                                    <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_plus_learn_more_link,trigger=pricing_page" href="/pricing/plus" class="learn_more_plus plan_price_details">Learn more</a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Searchable messages <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top ts_tip_multiline">
+				<span class="ts_tip_tip">
+					<span class="ts_tip_multiline_inner">
+						Slack saves all your messages for you, but you can only see and search the most recent 10,000 on the Free plan.					</span>
+				</span></ts-icon>
+                                </td>
+                                <td>10K of your team's most recent messages</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                            </tr>
+
+                            <tr>
+                                <td>Apps/services <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top ts_tip_multiline">
+				<span class="ts_tip_tip">
+					<span class="ts_tip_multiline_inner">
+						Use integrations to connect with the tools and services you use every day. See a full list of integrations and bots at the <a href="/apps">Slack App Directory</a>.					</span>
+				</span></ts-icon>
+                                </td>
+                                <td>10 third-party or custom integrations</td>
+                                <td>Unlimited</td>
+                                <td>Unlimited</td>
+                            </tr>
+
+                            <tr class="table_sep">
+                                <td>External access <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top ts_tip_multiline">
+				<span class="ts_tip_tip">
+					<span class="ts_tip_multiline_inner">
+						Use Guest Accounts to grant limited Slack access to people outside your team, such as vendors or clients.					</span>
+				</span></ts-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>Single-channel guests</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>Multi-channel guests</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr class="table_sep">
+                                <td>User authentication</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>OAuth with Google</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>Mandatory two-factor authentication</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>SAML-based single sign-on (SSO)</td>
+                                <td></td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr class="table_sep">
+                                <td>Compliance</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>Custom retention policies for messages and files</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>Compliance Exports for all messages</td>
+                                <td></td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr class="table_sep">
+                                <td>Administration</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>Custom User Groups to reach a team or department</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>User provisioning and deprovisioning</td>
+                                <td></td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>Real-time Active Directory sync with OneLogin, Okta and Ping</td>
+                                <td></td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr class="table_sep">
+                                <td>Calls</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>Voice and video calls</td>
+                                <td>One-on-one only</td>
+                                <td>Up to 15 participants</td>
+                                <td>Up to 15 participants</td>
+                            </tr>
+
+                            <tr>
+                                <td>Screen sharing</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr class="table_sep">
+                                <td>Search &amp; Intelligence <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top ts_tip_multiline">
+				<span class="ts_tip_tip">
+					<span class="ts_tip_multiline_inner">
+						Intelligent features help you quickly find what you need and stay up-to-date on important conversations.					</span>
+				</span></ts-icon>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>Search for relevant people, channels and files</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>Channel recommendations</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr>
+                                <td>Message highlights</td>
+                                <td></td>
+                                <td><div class="green_check"></div></td>
+                                <td><div class="green_check"></div></td>
+                            </tr>
+
+                            <tr class="table_sep">
+                                <td>Other benefits</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>File storage</td>
+                                <td>5 GB total</td>
+                                <td>10 GB per team member</td>
+                                <td>20 GB per team member</td>
+                            </tr>
+
+                            <tr>
+                                <td>Support</td>
+                                <td></td>
+                                <td>Priority support</td>
+                                <td>24/7 support with four-hour response time</td>
+                            </tr>
+
+                            <tr>
+                                <td>Uptime</td>
+                                <td></td>
+                                <td></td>
+                                <td>99% guaranteed uptime SLA</td>
+                            </tr>
+
+                            <tr class="bottom_ctas">
+                                <td></td>
+                                <td><button data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_logged_out,trigger=pricing_page" class="btn detail_button create_free" data-qa="create_team_free">Create New Team</button></td>
+                                <td>		<form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_standard_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                    <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                    <input type="hidden" name="step" value="2" />
+                                    <input type="hidden" name="product" value="std_y" />
+                                    <button type="submit" class="btn detail_button buy_std">Buy Standard</button>
+                                </form>
+                                </td>
+                                <td>		<form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_plus_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                    <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                    <input type="hidden" name="step" value="2" />
+                                    <input type="hidden" name="product" value="plus_y" />
+                                    <button type="submit" class="btn detail_button buy_plus">Buy Plus</button>
+                                </form>
+                                </td>
+                            </tr>
+
+                        </table>
+
+
+                        <div class="show_on_tablet">
+
+                            <div class="plan lite" data-plan-name="lite">
+
+                                <div class="plan_col">
+                                    <div class="plan_card cursor_pointer ">
+                                        <h3 class="plan_type"></i>Free</h3>
+
+                                        <span class="localized_plan_price" data-qa="free_plan_price">€0</span>
+
+                                        <button data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_logged_out,trigger=pricing_page" class="btn detail_button create_free" data-qa="create_team_free">Create New Team</button>
+                                        <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_lite_learn_more_link,trigger=pricing_page" href="#" class="plan_price_details lean_more_free">Learn more</a>
+                                        <p></p>
+
+
+                                        <div class="hover_card">
+                                            <p>For teams wanting to try out Slack for an <span class="bold_desktop">unlimited period</span> of time.
+                                                <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_lite_learn_more_link,trigger=pricing_page" href="#" class="plan_price_details learn_more_free">Learn more</a></p>
+                                            <ts-icon class="mobile_accordion_chevron"></ts-icon>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="plan_content">
+                                    <div class="plan_content_container">
+
+                                        <div class="plan_subhead">
+                                            <h3><b>Includes</b> all of these great features:</h3>
+                                        </div>
+                                        <ul>
+                                            <li class="table_sep">Searchable messages <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top  ts_tip_multiline">
+							<span class="ts_tip_tip">
+								<span class="ts_tip_multiline_inner">
+									Slack saves all your messages for you, but you can only see and search the most recent 10,000 on the Free plan.
+								</span>
+							</span>
+                                            </ts-icon>
+
+                                            </li>
+                                            <li>10K of your team's most recent communications</li>
+
+                                            <li class="table_sep">Apps/services <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top  ts_tip_multiline">
+							<span class="ts_tip_tip">
+								<span class="ts_tip_multiline_inner">
+									Use integrations to connect with the tools and services you use every day. See a full list of integrations and bots at the <a href="/apps">Slack App Directory</a>.
+								</span>
+							</span></ts-icon></li>
+                                            <li>10 third-party or custom integrations</li>
+
+                                            <li class="table_sep">Calls</li>
+                                            <li>One-on-one voice and video calls</li>
+
+                                            <li class="table_sep">File storage</li>
+                                            <li>5 GB total</li>
+                                        </ul>
+                                        <div class="mobile_buttons">
+                                            <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_lite_learn_more_link,trigger=pricing_page" href="/is" class="plan_price_details learn_more_free">Learn more</a>
+                                            <button data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_logged_out,trigger=pricing_page" class="btn detail_button create_free" data-qa="create_team_free">Create New Team</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plan standard" data-plan-name="standard">
+
+                                <div class="plan_col">
+
+                                    <div class="plan_card cursor_pointer ">
+                                        <h3 class="plan_type">Standard</h3>
+
+
+                                        <span class="localized_plan_price" data-qa="std_plan_price_annual">€6.25</span>
+                                        <span class="plan_price_details">per active user, per month, billed annually <br/>(€7.50 if billed monthly)</span>
+
+                                        <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_standard_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                            <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                            <input type="hidden" name="step" value="2" />
+                                            <input type="hidden" name="product" value="std_y" />
+                                            <button type="submit" class="btn detail_button buy_std">Buy Standard</button>
+                                        </form>
+
+                                        <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_standard_learn_more_link,trigger=pricing_page" href="/pricing/standard" class="plan_price_details learn_more_std">Learn more</a><p></p>
+
+
+                                        <div class="hover_card">
+                                            <p>For <span class="bold_desktop">teams</span> and <span class="bold_desktop">businesses</span> ready to make Slack the hub for their projects and communications.
+                                                <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_standard_learn_more_link,trigger=pricing_page" href="/pricing/standard" class="plan_price_details learn_more_std">Learn more</a></p>
+                                            <ts-icon class="mobile_accordion_chevron"></ts-icon>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="plan_content">
+                                    <div class="plan_content_container">
+
+
+                                        <div class="plan_subhead">
+                                            <h3><b>Includes</b> Everything in Free, and:</h3>
+                                        </div>
+                                        <ul>
+                                            <li class="table_sep">Searchable messages <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top  ts_tip_multiline">
+							<span class="ts_tip_tip">
+								<span class="ts_tip_multiline_inner">
+									Slack saves all your messages for you, but you can only see and search the most recent 10,000 on the Free plan.
+								</span>
+							</span></ts-icon></li>
+                                            <li>Unlimited</li>
+
+                                            <li class="table_sep">Apps/services <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top  ts_tip_multiline">
+							<span class="ts_tip_tip">
+								<span class="ts_tip_multiline_inner">
+									Use integrations to connect with the tools and services you use every day. See a full list of integrations and bots at the <a href="/apps">Slack App Directory</a>.
+								</span>
+							</span></ts-icon></li>
+                                            <li>Unlimited</li>
+
+                                            <li class="table_sep">Calls</li>
+                                            <li>Group voice and video calls with up to 15 participants</li>
+                                            <li>Screen sharing</li>
+
+                                            <li class="table_sep">External access  <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top ts_tip_multiline">
+							<span class="ts_tip_tip">
+								<span class="ts_tip_multiline_inner">
+									Use Guest Accounts to grant limited Slack access to people outside your team, such as vendors or clients.
+								</span>
+							</span></ts-icon>
+                                            </li>
+                                            <li>Single-channel guests</li>
+                                            <li>Multi-channel guests</li>
+
+                                            <li class="table_sep">User authentication</li>
+                                            <li>OAuth with Google</li>
+                                            <li>Mandatory two-factor authentication</li>
+
+                                            <li class="table_sep">Compliance</li>
+                                            <li>Custom retention policies for messages and files</li>
+
+                                            <li class="table_sep">Administration</li>
+                                            <li>Custom User Groups to reach a team or department</li>
+
+                                            <li class="table_sep">Search &amp; Intelligence <ts-icon class="ts_icon_question_circle ts_tip ts_tip_top ts_tip_multiline">
+							<span class="ts_tip_tip">
+								<span class="ts_tip_multiline_inner">
+									Intelligent features help you quickly find what you need and stay up-to-date on important conversations.
+								</span>
+							</span></ts-icon>
+                                            </li>
+                                            <li>Search for relevant people, channels and files</li>
+                                            <li>Channel recommendations</li>
+                                            <li>Message highlights</li>
+
+                                            <li class="table_sep">File storage</li>
+                                            <li>10 GB per team member</li>
+
+                                            <li class="table_sep">Support</li>
+                                            <li>Priority support</li>
+                                        </ul>
+                                        <div class="mobile_buttons">
+                                            <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_standard_learn_more_link,trigger=pricing_page" href="/pricing/standard" class="plan_price_details learn_more_std">Learn more</a>
+                                            <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_standard_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                                <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                                <input type="hidden" name="step" value="2" />
+                                                <input type="hidden" name="product" value="std_y" />
+                                                <button type="submit" class="btn detail_button buy_std">Buy Standard</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="plan plus" data-plan-name="plus">
+
+                                <div class="plan_col">
+                                    <div class="plan_card cursor_pointer ">
+                                        <h3 class="plan_type">Plus</h3>
+
+                                        <span class="localized_plan_price" data-qa="plus_plan_price_annual">€11.75</span>
+                                        <span class="plan_price_details">per active user, per month, billed annually<br/> (€14.10 if billed monthly)</span>
+
+                                        <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_plus_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                            <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                            <input type="hidden" name="step" value="2" />
+                                            <input type="hidden" name="product" value="plus_y" />
+                                            <button type="submit" class="btn detail_button buy_plus">Buy Plus</button>
+                                        </form>
+
+                                        <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_plus_learn_more_link,trigger=pricing_page" href="/pricing/plus" class="plan_price_details learn_more_plus">Learn more</a><p></p>
+
+
+                                        <div class="hover_card">
+                                            <p>For businesses needing <span class="bold_desktop">SSO</span>, <span class="bold_desktop">Compliance Exports</span>, and <span class="bold_desktop">guaranteed uptime</span> on a single Slack team.
+                                                <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_plus_learn_more_link,trigger=pricing_page" href="/pricing/plus" class="plan_price_details learn_more_plus">Learn more</a></p>
+                                            <ts-icon class="mobile_accordion_chevron"></ts-icon>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="plan_content">
+                                    <div class="plan_content_container">
+
+
+                                        <div class="plan_subhead">
+                                            <h3><b>Includes</b> Everything in Standard, and:</h3>
+                                        </div>
+                                        <ul>
+                                            <li class="table_sep">User authentication</li>
+                                            <li>SAML-based single sign-on (SSO)</li>
+
+                                            <li class="table_sep">Compliance</li>
+                                            <li>Custom Exports for all messages</li>
+
+                                            <li class="table_sep">Administration</li>
+                                            <li>User provisioning and deprovisioning</li>
+                                            <li>Real-time Active Directory sync with OneLogin, Okta and Ping</li>
+
+                                            <li class="table_sep">File storage</li>
+                                            <li>20 GB per team member</li>
+
+                                            <li class="table_sep">Support</li>
+                                            <li>24/7 support with four-hour response time</li>
+
+                                            <li class="table_sep">Uptime</li>
+                                            <li>99% guaranteeed uptime SLA</li>
+                                        </ul>
+                                        <div class="mobile_buttons">
+                                            <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=plan_plus_learn_more_link,trigger=pricing_page" href="/pricing/plus" class="plan_price_details learn_more_plus">Learn more</a>
+                                            <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_plus_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                                <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                                <input type="hidden" name="step" value="2" />
+                                                <input type="hidden" name="product" value="plus_y" />
+                                                <button type="submit" class="btn detail_button buy_plus">Buy Plus</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <nav class="pricing_matrix_banner">
+                        <div class="section_main">
+
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="table_sep"><b>Our Plans:</b></td>
+                                    <td> 					<div class="td_flex">
+                                        <b>Slack Free</b>
+                                        <button data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_logged_out,trigger=pricing_page" class="btn detail_button create_free" data-qa="create_team_free">Sign Up</button>
+
+                                    </div>
+                                    </td>
+                                    <td> 					<div class="td_flex">
+                                        <b>Slack Standard</b>
+                                        <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_standard_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                            <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                            <input type="hidden" name="step" value="2" />
+                                            <input type="hidden" name="product" value="std_y" />
+                                            <button type="submit" class="btn detail_button buy_std">Buy</button>
+                                        </form>
+
+
+                                    </div>
+                                    </td>
+                                    <td> 					<div class="td_flex">
+                                        <b>Slack Plus</b>
+                                        <form data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=buy_plus_button_logged_out,trigger=pricing_page" action="/checkout" method="post" class="no_bottom_margin">
+                                            <input type="hidden" name="crumb" value="s-1500136807-5d00dacbdb-☃" />
+                                            <input type="hidden" name="step" value="2" />
+                                            <input type="hidden" name="product" value="plus_y" />
+                                            <button type="submit" class="btn detail_button buy_plus">Buy</button>
+                                        </form>
+
+                                    </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </nav>
+
+
+
+
+                </div>
+
+                <div class="panel panel_enterprise " id="enterprise-grid">
+
+
+                    <h4 class="pricing_card_header">Slack Enterprise Grid powers the design, usage, and administration of <span class="pricing_card_header_callout">multiple interconnected Slack workspaces</span> across your entire company.</h4>
+
+                    <div class="plans">
+                        <div class="plan enterprise" data-plan-name="ent">
+
+                            <div class="plan_image">
+                                <div class="plan_card ">
+                                    <img src="https://a.slack-edge.com/3d5d8/img/pricing/enterprise-grid-logo@2x.png" srcset="https://a.slack-edge.com/3d5d8/img/pricing/enterprise-grid-logo.png 1x, https://a.slack-edge.com/3d5d8/img/pricing/enterprise-grid-logo@2x.png 2x" alt="Slack Enterprise Grid logo" class="normal-padding">
+                                </div>
+
+                                <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=enterprise_contact_us_button,trigger=pricing_page" href="/help/contact?accounts_pricing=1" class="contact_enterprise btn detail_button">Contact Us</a>
+
+                            </div>
+
+                            <div class="plan_details">
+
+                                <div class="plan_subhead">
+                                    <h3><strong>Slack Enterprise Grid</strong> includes:</h3>
+                                </div>
+                                <ul>
+                                    <li><span>Organization-wide search, direct messaging, and announcement-focused channels</span></li>
+                                    <li><span>Unlimited workspaces, customized around the people, information and apps that matter most to a team</span></li>
+                                    <li><span>Shared channels between workspaces to connect teams when needed</span></li>
+                                </ul>
+                                <hr>
+                                <ul>
+                                    <li><span>Security, compliance, billing, and platform integration management in a single view</span></li>
+                                    <li><span>Support for integrations with data loss prevention (DLP), e-Discovery, and offline backup providers</span></li>
+                                    <li><span>1 TB (1,000 GB) of storage per user</span></li>
+                                </ul>
+                                <hr>
+                                <ul>
+
+                                    <li><span>Designated account and customer success teams</span></li>
+                                    <li><span>24/7 support with 2-hour response time</span></li>
+                                </ul>
+                                <hr>
+                                <div class="align_center">
+                                    <a href="/enterprise" class="learn_more_link learn_more_enterprise" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_enterprise_tab">Learn more about Slack <span class="no_wrap">Enterprise Grid</span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>		</div>
+            </div>
+
+        </div>
+
+        <section class="enterprise_security">
+            <div class="section_content">
+
+                <h3>Slack leads the way in Enterprise security</h3>
+                <p>In addition to data encryption in transit and at rest, we operate comprehensive compliance and assurance programs.</p>
+                <p class="small_top_margin"><a href="/security" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_security_page,trigger=pricing_page">Learn how Slack leads the way in Enterprise Security</a></p>
+                <div class="enterprise_security_logos">
+                    <div class="enterprise_security_logo csa">
+                        <h4>CSA</h4>
+                        <p>Cloud</p>
+                        <p>Security Alliance</p>
+                    </div>
+
+                    <div class="enterprise_security_logo soc">
+                        <h4>SOC 2</h4>
+                        <p>(Type &#8544; &amp; &#8545;)</p>
+                        <p>Trust Services Principles</p>
+                    </div>
+
+                    <div class="enterprise_security_logo soc">
+                        <h4>SOC 3</h4>
+                        <p>Service</p>
+                        <p>Organization Controls</p>
+                    </div>
+
+                    <div class="enterprise_security_logo nist">
+                        <h4>NIST 800-53</h4>
+                        <p>National Institute of Standards and Technology</p>
+                    </div>
+
+                    <div class="enterprise_security_logo hipaa">
+                        <h4>HIPAA</h4>
+                        <p>Health Insurance Portability and Accountability Act</p>
+                    </div>
+
+                    <div class="enterprise_security_logo privacyshield">
+                        <h4>EU/US Privacy Shield</h4>
+                        <p>Data</p>
+                        <p>Privacy Practices</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="new_signup clear_blue_bg clearfix top">
+            <div class="section_content">
+                <p>Slack is <strong>free</strong> to use for as long as you want for teams of all sizes.</p>
+                <a href="/create" data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_middle,trigger=pricing_page" class="btn btn_border btn_large small_top_margin" data-qa="create_team_middle">Create New Team</a>
+            </div>
+        </section>
+
+
+
+
+
+        <section class="happy_customers">
+            <div class="section_content">
+                <h3>Thousands of happy customers, including:</h3>
+                <div class="customer_logos"></div>
+                <span class="offscreen">Airbnb, Time, Pinterest, BuzzFeed, EA, Pandora, Harvard University, LinkedIn, Samsung, Ogilvy, eBay, Autodesk, Ticketmaster, Condé Nast, Urban Outfitters</span> 					<p class="hear_more larger_top_margin"><a href="/customers">Hear what our customers have to say. <ts-icon class="ts_icon_arrow_right" aria-hidden="true"></ts-icon></a></p>
+            </div>
+        </section>
+        <hr class="section_divider" />
+
+        <section class="from_the_wall_of_love">
+            <div class="section_content">
+                <h3><i class="ts_icon ts_icon_heart_o"></i> From our Wall of Love</h3>
+
+
+                <div id="tweets">
+                    <div class="carousel">
+                        <ul class="carousel_container">
+                            <li data-position="0">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Thank you @SlackHQ and @trello for making it easier and faster for our team to communicate, we love you.pic.twitter.com/pd8mNVyC1b</p>&mdash; Thirtymin (@Thirtymin) <a href="https://twitter.com/Thirtymin/status/762747157254434816">August 8, 2016</a></blockquote>
+                            </li>
+                            <li data-position="1">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Adopted @SlackHQ across the firm, internal e-mail traffic dropped off a cliff, global communication improved</p>&mdash; Christian Nentwich (@cnentwich) <a href="https://twitter.com/cnentwich/status/761645069271269376">August 5, 2016</a></blockquote>
+                            </li>
+                            <li data-position="2">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Wow, @SlackHQ support is seriously amazing. Replied to a ticket at 1AM EST and resolved my issue. <3</p>&mdash; AgentK @ Disneyland (@AgentK20) <a href="https://twitter.com/AgentK20/status/761078023504310273">August 3, 2016</a></blockquote>
+                            </li>
+                            <li data-position="3">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>After a week using @SlackHQ in lab and loving it, wondering what other modern lab management tools are we missing out on? #notapaidsponsor</p>&mdash; Weinberg Lab @ UCSF (@WeinbergLabUCSF) <a href="https://twitter.com/WeinbergLabUCSF/status/761040228635193349">August 3, 2016</a></blockquote>
+                            </li>
+                            <li data-position="4">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Love @SlackHQ. No idea the answer to something. Search Slack. Locate 13 month old discussion with answer and context. Saved a bunch of time.</p>&mdash; Ben (@benmcfc) <a href="https://twitter.com/benmcfc/status/760785907490447360">August 3, 2016</a></blockquote>
+                            </li>
+                            <li data-position="5">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Been able to accomplish 100x more work over the last several months because of @SlackHQ. Efficient, seamless for our Arbit dev team.</p>&mdash; Alex Bullington (@acbullington) <a href="https://twitter.com/acbullington/status/760551457993228289">August 2, 2016</a></blockquote>
+                            </li>
+                            <li data-position="6">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>So many people ask me if remote work is lonely. I always answer no because @SlackHQ makes life amazing!</p>&mdash; Pawel Janiak (@cynicalgrinch) <a href="https://twitter.com/cynicalgrinch/status/758256520253607936">July 27, 2016</a></blockquote>
+                            </li>
+                            <li data-position="7">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Wrapping up week two of using @SlackHQ & I'm so happy! After YEARS in email, can't believe how much time it saves!pic.twitter.com/DYt7HTwnam</p>&mdash; Andrew Aviza (@aviza) <a href="https://twitter.com/aviza/status/756230900833288192">July 21, 2016</a></blockquote>
+                            </li>
+                            <li data-position="8">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Finding so many uses for @SlackHQ  - Just the other day two of our employees got stuck in an elevator and used Slack to escape! that app!</p>&mdash; Skidmore Studio (@SkidmoreStudio) <a href="https://twitter.com/SkidmoreStudio/status/755884207872708608">July 20, 2016</a></blockquote>
+                            </li>
+                            <li data-position="9">
+                                <blockquote class="twitter-tweet" lang="en" data-cards="hidden" data-conversation="none"><p>Absolutely love using @SlackHQ all day every day! Watch payments, customers , CRM, sign ups, phone calls in one place #startuplife</p>&mdash; Rexy Redden (@Rumblerex) <a href="https://twitter.com/Rumblerex/status/755711690872807424">July 20, 2016</a></blockquote>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="carousel_controls">
+                        <a href="#" data-action="left" class="left_arrow"><i class="ts_icon ts_icon_chevron_large_left"></i></a>
+                        <a href="#" data-action="right" class="right_arrow"><i class="ts_icon ts_icon_chevron_large_right"></i></a>
+                    </div>
+
+                </div>
+
+                <div>
+                    <p>
+                        More at our <a class="sky_blue" href="https://twitter.com/SlackLoveTweets" target="_blank">Wall of Love</a>
+                    </p>
+                </div>
+
+
+                <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+        </section>
+
+
+        <section class="fair_billing_policy " id="fair_billing">
+
+            <div class="section_content">
+
+                <h3>Fair Billing Policy</h3>
+                <p>
+                    Most enterprise software pricing is designed to charge you per user regardless of how many people on your team are actively using the software. If you buy 1,000 seats but only use 100, you still get charged for 1,000. We don&rsquo;t think that&rsquo;s fair. And it&rsquo;s also hard to predict how many seats you&rsquo;ll need in advance.
+                </p>
+                <p>
+                    At Slack, you only get billed for what you use. So you don&rsquo;t pay for the users that aren&rsquo;t using Slack. And if someone you&rsquo;ve already paid for becomes inactive, we&rsquo;ll even add a prorated credit to your account for the unused time. Fair&rsquo;s fair.
+                </p>
+            </div>
+        </section>
+
+
+
+        <section class="nonprofit_pricing" id="slack_for_good">
+            <div class="section_content">
+
+                <h3>Slack for Good</h3>
+
+                <p>
+                    Slack wants to support people in the world who are doing good things. That’s why we offer special discount pricing for qualified nonprofit organizations and educational institutions.
+                </p>
+                <p class="large_top_margin learn_more_links">
+                    <a href="https://slack.zendesk.com/hc/en-us/articles/204368833">Learn more about Slack for Nonprofits<ts-icon class="ts_icon_arrow_right" aria-hidden="true"></ts-icon></a><br />
+                    <a href="https://slack.zendesk.com/hc/en-us/articles/206646877-slack-for-education">Learn more about Slack for Education<ts-icon class="ts_icon_arrow_right" aria-hidden="true"></ts-icon></a>
+                </p>
+            </div>
+        </section>
+
+        <section class="common_questions_and_resources">
+            <div class="section_content">
+
+
+                <h2>
+                    Frequently Asked
+                    <br />
+                    Questions
+                </h2>
+
+                <div class="question_category" id="billing_and_invoicing">
+
+
+                    <ul class="question_list">
+                        <li>
+                            <h4><a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_faq_billing_invoices_header_payment_options" href="#">What are my payment options - credit card and/or invoicing?<i class="ts_icon ts_icon_plus_square_o"></i></a></h4>
+                            <p>You can use your credit card to pay for any plan. If you sign up for an Annual subscription and plan to spend at least $10K, we can invoice you annually. <a href="/help/contact?accounts_pricing=1">Contact us</a> to start the process.</p>
+                        </li>
+                        <li>
+                            <h4><a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_faq_billing_invoices_header_fair_billing" href="#">Our team has several accounts which are not being actively used, but which we don&rsquo;t want to disable. Do we still have to pay for them?<i class="ts_icon ts_icon_plus_square_o"></i></a></h4>
+
+                            <p>
+                                Every day we check to see if everyone on your team is active. If they have been inactive for a period of time, we stop charging you for that person and add a prorated credit to your account for the time you&rsquo;ve already paid. You&rsquo;ll always and only be billed for what you use &mdash; fair and square!
+                            </p>
+
+                        </li>
+                        <li>
+                            <h4><a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_faq_billing_invoices_header_credits" href="#">My team has credits. How do we use them?<i class="ts_icon ts_icon_plus_square_o"></i></a></h4>
+                            <p>Once your team signs up for a subscription plan, we&rsquo;ll draw against your credit balance until it runs out. Only then will we start charging your subscription to your credit card. As long as you sign up for a subscription plan before the expiration date, those credits are yours to use until they&rsquo;re all gone.</p>
+                        </li>
+                        <li>
+                            <h4><a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_faq_billing_invoices_header_billing_new_users" href="#">We need to add new users to our team. How will that be billed?<i class="ts_icon ts_icon_plus_square_o"></i></a></h4>
+                            <p>We&rsquo;ll make a one-time, prorated charge to your credit card to cover your new team member&rsquo;s account for the remainder of the current billing period.</p>
+                            <p>As an example, suppose your team is on the &ldquo;Standard plan,&rdquo; which costs $8 per active user per month when billed monthly. You add a new team member 10 days into your billing period and there are 20 remaining days in the month. The per-day cost for each user is $8 / 30, so we will make a one-time charge of $5.33 ($8 / 30 days * 20 days) to your team&rsquo;s credit card on file.</p>
+                        </li>
+                        <li>
+                            <h4><a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_faq_billing_invoices_header_cancel_subscription" href="#">My team wants to cancel its subscription. How do we do that? Can we get a refund?<i class="ts_icon ts_icon_plus_square_o"></i></a></h4>
+                            <p>Team Owners can change the team&rsquo;s subscription level. There are two options when downgrading from a paid plan to the Free plan:
+                            <ul>
+                                <li>You can downgrade to the Free plan immediately. If there is more than one day until your renewal date, we will prorate the remaining balance on your account and hold it for your team as a credit. You can use that credit towards a reactivation of your paid subscription in the future.</li>
+                                <li>We can automatically downgrade you to the Free plan at your next renewal date. Your subscription will remain active at its current level through the end of the billing period that you&rsquo;ve already paid for.</li>
+                            </ul>
+                            <p>We do not offer refunds.</p>
+                        </li>
+                    </ul>
+
+                    <p class="large_top_margin">Get more information on <a href="https://slack.zendesk.com/hc/en-us/articles/201723133-billing-faq">billing at Slack</a>.</p>
+
+                </div>
+            </div>
+        </section>
+        <section class="back_to_the_top">
+            <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_back_to_top" href="#top" class="btn btn_large"><i class="ts_icon ts_icon_arrow_large_up"></i> Back to the top</a>
+        </section>
+        <section class="new_signup neutral_white_bg clearfix bottom">
+            <div class="section_content">
+                <p>Slack is <strong>free</strong> to use for as long as you want for teams of all sizes.</p>
+                <a href="/create" data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_page_bottom,trigger=pricing_page" class="clear_blue_bg neutral_white btn btn_large small_top_margin" data-qa="create_team_bottom">Create New Team</a>
+            </div>
+        </section>
+        <section class="ready_to_try_slack bottom">
+            <div class="section_content">
+                <p>
+
+                    More questions? Let us help.<br />
+                    <a data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_contact_us_page_bottom,has_plan=false" href="/help/contact">Contact us <i class="ts_icon ts_icon_arrow_large_right"></i></a></a>
+                </p>
+            </div>
+        </section>
+
+        <div id="plan_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Pricing Guide" aria-hidden="true">
+
+            <div class="modal-body">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                <div id="plan_lite_preview" class="plan_preview">
+
+                    <div class="plan">
+                        <h3 class="plan_name"><i class="brick_icon"></i>Free</h3>
+                        <span data-plan-cost class="plan_price"><span class="currency">$</span>0</span>
+                        <span class="plan_lite_price_details">for small teams or unlimited evaluation</span>
+                    </div>
+                    <div class="preview_details" data-plan="lite">
+                        <p>Search and browse <strong>10k</strong> most recent messages</p>
+                        <p><strong>5GB</strong> total storage</p>
+                        <p><strong>10</strong> service integrations (like Twitter, Google Docs, Dropbox, GitHub and many more)</p>
+                    </div>
+                </div>
+
+                <div id="plan_lite_description" class="plan_description">
+
+                    <p class="plan_sentence">We offer a free plan for small teams, casual users, and anyone who wants to evaluate Slack.</p>
+                    <p class="cost_explanation">Since we&rsquo;ve never liked time-limited product trials, you can use our Free plan to take as long as you want to try Slack and see if it works for your team. There&rsquo;s also no limit on how many people you can add to your team on Slack.</p>
+                    <p class="cost_explanation">If you&rsquo;re happy with our Free plan, please carry on. When your team needs more, you can easily upgrade to one of our premium tiers.</p>
+                    <a data-gtm-click="SignUp" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=pricing_page_create_new_team_modal_button" href="/create" class="btn btn_large top_margin detail_button" data-qa="create_team_modal">Create New Team</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+    <div id="overlay"></div>
+</div>
+
+
+
+
+
+<footer  data-qa="footer">
+    <section class="links">
+        <div class="grid">
+            <div class="col span_1_of_4 nav_col">
+                <ul>
+                    <li class="cat_1">Using Slack</li>
+                    <li><a href="/is" data-qa="product_footer" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_product">Product</a></li>
+                    <li><a href="/enterprise" data-qa="enterprise_footer" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_enterprise">Enterprise</a></li>
+                    <li><a href="/pricing" data-qa="pricing_footer" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_pricing">Pricing</a></li>
+                    <li><a href="https://get.slack.help/hc/en-us" data-qa="support_footer" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_support">Support</a></li>
+                    <li><a href="/guides" data-qa="getting_started" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_getting_started">Slack Guides</a></li>
+                    <li><a href="/apps" data-qa="app_directory" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_app_directory">App Directory</a></li>
+                    <li><a href="https://api.slack.com/" data-qa="api" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_api">API</a></li>
+                </ul>
+            </div>
+            <div class="col span_1_of_4 nav_col">
+                <ul>
+                    <li class="cat_2">Slack <ts-icon class="ts_icon_heart"></ts-icon></li>
+                    <li><a href="/jobs" data-qa="jobs" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_jobs">Jobs</a></li>
+                    <li><a href="/customers" data-qa="customers" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_customers">Customers</a></li>
+                    <li><a href="/developers" data-qa="developers" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_developers">Developers</a></li>
+                    <li><a href="/events" data-qa="events" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_events">Events</a></li>
+                    <li><a href="http://slackhq.com/" data-qa="blog_footer" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_blog">Blog</a></li>
+                    <li><a href="/podcast" data-qa="podcast" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_podcast">Podcast</a></li>
+                    <li><a href="https://slack.shop/" data-qa="slack_shop" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_slack_shop">Slack Shop</a></li>
+                </ul>
+            </div>
+            <div class="col span_1_of_4 nav_col">
+                <ul>
+                    <li class="cat_3">Legal</li>
+                    <li><a href="/privacy-policy" data-qa="privacy" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_privacy">Privacy</a></li>
+                    <li><a href="/security" data-qa="security" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_security">Security</a></li>
+                    <li><a href="/terms-of-service" data-qa="tos" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_tos">Terms of Service</a></li>
+                    <li><a href="/policies" data-qa="policies" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_policies">Policies</a></li>
+                </ul>
+            </div>
+            <div class="col span_1_of_4 nav_col">
+                <ul>
+                    <li class="cat_4">Handy Links</li>
+                    <li><a href="/downloads" data-qa="downloads" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_downloads">Download desktop app</a></li>
+                    <li><a href="/downloads" data-qa="downloads_mobile" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_downloads_mobile">Download mobile app</a></li>
+                    <li><a href="/brand-guidelines" data-qa="brand_guidelines" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_brand_guidelines">Brand Guidelines</a></li>
+                    <li><a href="https://slackatwork.com" data-qa="slack_at_work" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_slack_at_work">Slack at Work</a></li>
+                    <li><a href="https://status.slack.com/" data-qa="status" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_status">Status</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="footnote">
+        <section>
+            <a href="https://slack.com" aria-label="Slack homepage" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_slack_icon"><ts-icon class="ts_icon_slack_pillow" aria-hidden="true"></ts-icon></a>
+            <ul>
+                <li>
+                    <a href="/help/contact" data-qa="contact_us" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_contact_us">Contact Us</a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/SlackHQ" data-qa="slack_twitter" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_slack_twitter" aria-label="Slack on Twitter"><ts-icon class="ts_icon_twitter" aria-hidden="true"></ts-icon></a>
+                </li>
+                <li class="yt">
+                    <a href="https://www.youtube.com/channel/UCY3YECgeBcLCzIrFLP4gblw" data-qa="slack_youtube" data-clog-event="WEBSITE_CLICK" data-clog-params="click_target=footer_slack_youtube" aria-label="Slack on YouTube"><ts-icon class="ts_icon_youtube" aria-hidden="true"></ts-icon></a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</footer>
+
+
+
+
+
+<script type="text/javascript">
+
+    /**
+     * A placeholder function that the build script uses to
+     * replace file paths with their CDN versions.
+     *
+     * @param {String} file_path - File path
+     * @returns {String}
+     */
+    function vvv(file_path) {
+
+        var vvv_warning = 'You cannot use vvv on dynamic values. Please make sure you only pass in static file paths.';
+        if (TS && TS.warn) {
+            TS.warn(vvv_warning);
+        } else {
+            console.warn(vvv_warning);
+        }
+
+        return file_path;
+    }
+
+    var cdn_url = "https:\/\/slack.global.ssl.fastly.net";
+    var vvv_abs_url = "https:\/\/slack.com\/";
+    var inc_js_setup_data = {
+        emoji_sheets: {
+            apple: 'https://a.slack-edge.com/bfaba/img/emoji_2016_06_08/sheet_apple_64_indexed_256colors.png',
+            google: 'https://a.slack-edge.com/f360/img/emoji_2016_06_08/sheet_google_64_indexed_128colors.png',
+            twitter: 'https://a.slack-edge.com/bfaba/img/emoji_2016_06_08/sheet_twitter_64_indexed_128colors.png',
+            emojione: 'https://a.slack-edge.com/bfaba/img/emoji_2016_06_08/sheet_emojione_64_indexed_128colors.png',
+        },
+    };
+</script>
+<script type="text/javascript">
+    <!--
+    // common boot_data
+    var boot_data = {
+        start_ms: Date.now(),
+        app: 'web',
+        user_id: '',
+        team_id: 'T00',
+        no_login: true,
+        version_ts: '1500083212',
+        version_uid: '24d68642179c899f615a98dcd7d705ec2a428a59',
+        cache_version: "v16-giraffe",
+        cache_ts_version: "v2-bunny",
+        redir_domain: 'slack-redir.net',
+        signin_url: 'https://slack.com/signin',
+        abs_root_url: 'https://slack.com/',
+        api_url: '/api/',
+        team_url: '',
+        image_proxy_url: 'https://slack-imgs.com/',
+        beacon_timing_url: "https:\/\/slack.com\/beacon\/timing",
+        beacon_error_url: "https:\/\/slack.com\/beacon\/error",
+        clog_url: "clog\/track\/",
+        api_token: '',
+        ls_disabled: false,
+        use_react_sidebar: false,
+        use_react_messages: false,
+
+        vvv_paths: {
+
+            lz_string: "https:\/\/a.slack-edge.com\/bv1-1\/lz-string-1.4.4.worker.8de1b00d670ff3dc706a0.js",
+            codemirror: "https:\/\/a.slack-edge.com\/bv1-1\/codemirror.276c7c0e745cf2afa047.min.js",
+            codemirror_addon_simple: "https:\/\/a.slack-edge.com\/bv1-1\/simple.6d6b9767ccc48ef971d4.min.js",
+            codemirror_load: "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_load.f85ef99f6ca2441dd6d9.min.js",
+
+            // Silly long list of every possible file that Codemirror might load
+            codemirror_files: {
+                'apl': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_apl.83cf40b833835334a453.min.js",
+                'asciiarmor': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_asciiarmor.c4fa27565d9ecc60216c.min.js",
+                'asn.1': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_asn.1.ce8084190b417f2a2de4.min.js",
+                'asterisk': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_asterisk.dada007c6a3cbb8c19f6.min.js",
+                'brainfuck': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_brainfuck.b86f3838c54d7c548805.min.js",
+                'clike': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_clike.4ee0fe04fbb4ba704674.min.js",
+                'clojure': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_clojure.7b8fde4f8a7e2b0b321a.min.js",
+                'cmake': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_cmake.db4541003f350b8128dd.min.js",
+                'cobol': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_cobol.a3f416007d41c58bc4e0.min.js",
+                'coffeescript': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_coffeescript.0ed3145b8d18b0cd46ac.min.js",
+                'commonlisp': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_commonlisp.779b2849803b8fb485b1.min.js",
+                'css': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_css.be082fca6a87fe1e1f1f.min.js",
+                'crystal': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_crystal.463f29cb3a8258aa9b8e.min.js",
+                'cypher': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_cypher.1aca279b04f843d9939a.min.js",
+                'd': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_d.d83aacdb48afcc75e27c.min.js",
+                'dart': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_dart.414dcad33c2a4db24829.min.js",
+                'diff': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_diff.f6dde3514d4118bbd90d.min.js",
+                'django': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_django.f8537a4a1d956ab5aa29.min.js",
+                'dockerfile': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_dockerfile.3fb5f4c9058ccd26b7c8.min.js",
+                'dtd': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_dtd.49126dda832f132f1b94.min.js",
+                'dylan': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_dylan.88ac2d6fea71101bf00a.min.js",
+                'ebnf': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_ebnf.f8cce40b2751c0bd8b43.min.js",
+                'ecl': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_ecl.2ac48319df4250831e78.min.js",
+                'eiffel': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_eiffel.600a390082cbf4e41217.min.js",
+                'elm': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_elm.57c8ec1533592a92b4f7.min.js",
+                'erlang': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_erlang.d9e6d0aad526f15ee346.min.js",
+                'factor': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_factor.0dcbb36a302be1c5aad3.min.js",
+                'forth': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_forth.a59af8625507d5849eb1.min.js",
+                'fortran': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_fortran.27571069607067aa58e0.min.js",
+                'gas': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_gas.3d568d48846c3bba115a.min.js",
+                'gfm': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_gfm.4e8c454f9ee0aa697c23.min.js",
+                'gherkin': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_gherkin.6bcb85f1626c89218e41.min.js",
+                'go': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_go.b4c1c2d7fdfc46009276.min.js",
+                'groovy': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_groovy.2a6821b778a397a5c108.min.js",
+                'haml': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_haml.c06d42eaf3aea386abad.min.js",
+                'handlebars': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_handlebars.d2c36d3908194ab68223.min.js",
+                'haskell': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_haskell.73bf9013be9e7f6c5c8a.min.js",
+                'haxe': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_haxe.f5b58b5cc6ca4b5ac520.min.js",
+                'htmlembedded': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_htmlembedded.55cded80d8fdf31bb910.min.js",
+                'htmlmixed': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_htmlmixed.50ed44d762014b7e0f1e.min.js",
+                'http': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_http.0cae0da1eb19c48eb7e7.min.js",
+                'idl': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_idl.3f30a05488ef4fa5430a.min.js",
+                'jade': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_jade.54d66f1d7c799d63cc49.min.js",
+                'javascript': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_javascript.16f9b843c39208498f2d.min.js",
+                'jinja2': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_jinja2.4f74a652f7e6876b91aa.min.js",
+                'julia': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_julia.a95d56e79a8118f66c53.min.js",
+                'livescript': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_livescript.0073eab18da61304bc65.min.js",
+                'lua': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_lua.0e5562b95e4db7b32937.min.js",
+                'markdown': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_markdown.d287820fd10361ad72d2.min.js",
+                'mathematica': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_mathematica.db7592eaf3fcf0ebaf59.min.js",
+                'mirc': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_mirc.de65b53a2e956de93f70.min.js",
+                'mllike': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_mllike.9d5037f99e11e9b8cb74.min.js",
+                'modelica': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_modelica.9915f1e2328a9e73fe35.min.js",
+                'mscgen': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_mscgen.de63768b5c0feaa67884.min.js",
+                'mumps': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_mumps.4df5048ed53eda4554fa.min.js",
+                'nginx': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_nginx.cfb7a50e2270895f6626.min.js",
+                'nsis': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_nsis.4fa8f85995fe58335d71.min.js",
+                'ntriples': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_ntriples.351d3f907cb1a7400636.min.js",
+                'octave': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_octave.024965964176778f68d8.min.js",
+                'oz': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_oz.9d31868be74f3198ec32.min.js",
+                'pascal': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_pascal.7f31fe781c1a15641107.min.js",
+                'pegjs': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_pegjs.14535b3a5f46e03b4b11.min.js",
+                'perl': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_perl.6d29cb7fa15002076d8c.min.js",
+                'php': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_php.5951d51609094a088aee.min.js",
+                'pig': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_pig.3a84c69f456abac987ee.min.js",
+                'powershell': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_powershell.787d9c9dd1fbe56412eb.min.js",
+                'properties': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_properties.8f0218a9b5cc5339597b.min.js",
+                'puppet': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_puppet.dc47a7f86bc94dc7ce0d.min.js",
+                'python': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_python.930759d091ca5d9fc1bc.min.js",
+                'q': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_q.2c32168c5308e3aa55c5.min.js",
+                'r': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_r.8723865cff38b25541e0.min.js",
+                'rpm': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_rpm.d00d37f3713806e99d35.min.js",
+                'rst': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_rst.7de3c50543496175c85e.min.js",
+                'ruby': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_ruby.dd188060b47dde29ea1e.min.js",
+                'rust': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_rust.a9a267e5746f78edd308.min.js",
+                'sass': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_sass.4fb9a1c9738d19ff2148.min.js",
+                'scheme': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_scheme.0fccdc58bf84a4bd5f4d.min.js",
+                'shell': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_shell.71106a758b88b65f88ad.min.js",
+                'sieve': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_sieve.afd38c43091506519bc9.min.js",
+                'slim': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_slim.b49db0c71dfb2251db2a.min.js",
+                'smalltalk': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_smalltalk.cce66fef44b6b6e31961.min.js",
+                'smarty': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_smarty.ff2ab7cd555ad52d7a3a.min.js",
+                'solr': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_solr.79d36ea5a52a04758025.min.js",
+                'soy': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_soy.dc7ad913caa11c258ec9.min.js",
+                'sparql': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_sparql.b2191a5c90b751419eae.min.js",
+                'spreadsheet': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_spreadsheet.78705124b1e5ec0af2fe.min.js",
+                'sql': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_sql.eed86693726f28aa80df.min.js",
+                'stex': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_stex.37a0bc67464358ce843f.min.js",
+                'stylus': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_stylus.ee830b675ad51163548e.min.js",
+                'swift': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_swift.2aaee20580db1b1cd89e.min.js",
+                'tcl': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_tcl.ded61814d5b76e0dc415.min.js",
+                'textile': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_textile.da5971ba67dbd06ffde9.min.js",
+                'tiddlywiki': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_tiddlywiki.1f1cc9d30110d04c641c.min.js",
+                'tiki': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_tiki.141493bbb5c83fdea7b7.min.js",
+                'toml': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_toml.719bbb6d130f3c45c1e6.min.js",
+                'tornado': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_tornado.44bf0c83630c59a93249.min.js",
+                'troff': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_troff.1358e6398400c97b7d7f.min.js",
+                'ttcn': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_ttcn.770af9b55a1a2dd0d72d.min.js",
+                'ttcn:cfg': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_ttcn-cfg.e15e845a38c33845eca1.min.js",
+                'turtle': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_turtle.18ab50839fdc5b3c6ae0.min.js",
+                'twig': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_twig.cf54185dae1db5bfd086.min.js",
+                'vb': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_vb.904d482d7dbedca81680.min.js",
+                'vbscript': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_vbscript.18894cf0af3a82523f82.min.js",
+                'velocity': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_velocity.ce9d82131daa898979ff.min.js",
+                'verilog': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_verilog.d79705cbdffc0e07eba9.min.js",
+                'vhdl': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_vhdl.7897cfb253c58ed77a9b.min.js",
+                'vue': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_vue.a955b71c33e70f6cc835.min.js",
+                'xml': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_xml.1b1827756a9a776e969c.min.js",
+                'xquery': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_xquery.98b702be497019debf5a.min.js",
+                'yaml': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_yaml.d5c80f7fa9dbb54371d0.min.js",
+                'z80': "https:\/\/a.slack-edge.com\/bv1-1\/codemirror_lang_z80.ddd4d9a50f693a61ccd6.min.js"
+            }		},
+
+        notification_sounds: [{"value":"b2.mp3","label":"Ding","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/b2.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/b2.ogg"},{"value":"animal_stick.mp3","label":"Boing","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/animal_stick.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/animal_stick.ogg"},{"value":"been_tree.mp3","label":"Drop","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/been_tree.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/been_tree.ogg"},{"value":"complete_quest_requirement.mp3","label":"Ta-da","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/complete_quest_requirement.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/complete_quest_requirement.ogg"},{"value":"confirm_delivery.mp3","label":"Plink","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/confirm_delivery.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/confirm_delivery.ogg"},{"value":"flitterbug.mp3","label":"Wow","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/flitterbug.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/flitterbug.ogg"},{"value":"here_you_go_lighter.mp3","label":"Here you go","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/here_you_go_lighter.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/here_you_go_lighter.ogg"},{"value":"hi_flowers_hit.mp3","label":"Hi","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/hi_flowers_hit.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/hi_flowers_hit.ogg"},{"value":"knock_brush.mp3","label":"Knock Brush","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/knock_brush.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/knock_brush.ogg"},{"value":"save_and_checkout.mp3","label":"Whoa!","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/save_and_checkout.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/save_and_checkout.ogg"},{"value":"item_pickup.mp3","label":"Yoink","url":"https:\/\/slack.global.ssl.fastly.net\/7e91\/sounds\/push\/item_pickup.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/item_pickup.ogg"},{"value":"hummus.mp3","label":"Hummus","url":"https:\/\/slack.global.ssl.fastly.net\/7fa9\/sounds\/push\/hummus.mp3","url_ogg":"https:\/\/slack.global.ssl.fastly.net\/46ebb\/sounds\/push\/hummus.ogg"},{"value":"none","label":"None"}],
+        alert_sounds: [{"value":"frog.mp3","label":"Frog","url":"https:\/\/slack.global.ssl.fastly.net\/a34a\/sounds\/frog.mp3"}],
+        call_sounds: [{"value":"call\/alert_v2.mp3","label":"Alert","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/alert_v2.mp3"},{"value":"call\/incoming_ring_v2.mp3","label":"Incoming ring","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/incoming_ring_v2.mp3"},{"value":"call\/outgoing_ring_v2.mp3","label":"Outgoing ring","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/outgoing_ring_v2.mp3"},{"value":"call\/pop_v2.mp3","label":"Incoming reaction","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/pop_v2.mp3"},{"value":"call\/they_left_call_v2.mp3","label":"They left call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/they_left_call_v2.mp3"},{"value":"call\/you_left_call_v2.mp3","label":"You left call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/you_left_call_v2.mp3"},{"value":"call\/they_joined_call_v2.mp3","label":"They joined call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/they_joined_call_v2.mp3"},{"value":"call\/you_joined_call_v2.mp3","label":"You joined call","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/you_joined_call_v2.mp3"},{"value":"call\/confirmation_v2.mp3","label":"Confirmation","url":"https:\/\/slack.global.ssl.fastly.net\/08f7\/sounds\/call\/confirmation_v2.mp3"}],
+        call_sounds_version: "v2",
+        max_team_handy_rxns: 5,
+        max_channel_handy_rxns: 5,
+        max_poll_handy_rxns: 7,
+        max_handy_rxns_title_chars: 30,
+        default_tz: "America\/Los_Angeles",
+
+        feature_tinyspeck: false,
+        feature_create_team_google_auth: false,
+        feature_flannel_fe: false,
+        feature_no_placeholders_in_messages: false,
+        feature_webapp_always_collect_initial_time_period_stats: false,
+        feature_lazy_load_members_and_bots_everywhere: true,
+        feature_flannel_use_canary_sometimes: false,
+        feature_store_members_in_redux: false,
+        feature_file_threads: false,
+        feature_new_broadcast: true,
+        feature_message_replies_inline: false,
+        feature_subteam_members_diff: false,
+        feature_a11y_keyboard_shortcuts: false,
+        feature_email_ingestion: false,
+        feature_msg_consistency: false,
+        feature_sli_channel_priority: false,
+        feature_react_sidebar: false,
+        feature_thanks: false,
+        feature_attachments_inline: false,
+        feature_fix_files: true,
+        feature_channel_eventlog_client: true,
+        feature_paging_api: false,
+        feature_enterprise_frecency: false,
+        feature_enterprise_move_channels: true,
+        feature_i18n_bank_settlement: true,
+        feature_compliance_sku: true,
+        feature_i18n_checkout_updates: true,
+        feature_dunning: true,
+        feature_invoice_dunning: false,
+        feature_safeguard_org_retention: true,
+        feature_i18n_bank_settlement_checkout: true,
+        feature_ssi_checkout: false,
+        feature_enterprise_sso_test_mode: false,
+        feature_basic_analytics: false,
+        feature_team_site_basic_analytics: false,
+        feature_free_team_analytics_upsell: false,
+        feature_analytics_team_overview: false,
+        feature_analytics_csv_exports: false,
+        feature_refactor_admin_stats: false,
+        feature_guest_invitation_restrictions: false,
+        feature_teams_to_workspaces: false,
+        feature_sso_expose_signed_elements: true,
+        feature_channel_alert_words: false,
+        feature_shared_channels_beta: false,
+        feature_conversations_api: false,
+        feature_shared_channels_client: false,
+        feature_connecting_shared_channels: false,
+        feature_disconnecting_shared_channels: false,
+        feature_allow_shared_general: false,
+        feature_winssb_beta_channel: false,
+        feature_presence_sub: true,
+        feature_live_support_free_plan: false,
+        feature_slackbot_goes_to_college: false,
+        feature_newxp_enqueue_message: true,
+        feature_lato_2_ssb: true,
+        feature_focus_mode: false,
+        feature_star_shortcut: false,
+        feature_show_jumper_scores: true,
+        feature_sidebar_prefs: true,
+        feature_omit_localstorage_users_bots: false,
+        feature_disable_ls_compression: false,
+        feature_force_ls_compression: false,
+        feature_zendesk_app_submission_improvement: false,
+        feature_ignore_code_mentions: true,
+        feature_name_tagging_client: false,
+        feature_name_tagging_client_autocomplete: false,
+        feature_name_tagging_client_topic_purpose: false,
+        feature_use_imgproxy_resizing: true,
+        feature_auth_unfurls: true,
+        feature_localization: false,
+        feature_locale_es_ES: false,
+        feature_locale_fr_FR: false,
+        feature_locale_de_DE: false,
+        feature_locale_ja_JP: false,
+        feature_pseudo_locale: false,
+        feature_share_mention_comment_cleanup: false,
+        feature_external_files: false,
+        feature_min_web: true,
+        feature_electron_memory_logging: false,
+        feature_channel_exports: false,
+        feature_wait_for_all_mentions_in_client: false,
+        feature_prev_next_button: false,
+        feature_free_inactive_domains: true,
+        feature_keyboard_navigation: false,
+        feature_measure_css_usage: false,
+        feature_take_profile_photo: false,
+        feature_arugula: false,
+        feature_texty: true,
+        feature_texty_takes_over: true,
+        feature_texty_browser_substitutions: false,
+        feature_texty_rewrite_on_paste: false,
+        feature_texty_search: false,
+        feature_more_texty_search: false,
+        feature_texty_mentions: false,
+        feature_parsed_mrkdwn: false,
+        feature_toggle_id_translation: false,
+        feature_emoji_menu_tuning: false,
+        feature_default_shared_channels: false,
+        feature_react_lfs: false,
+        feature_workspace_request: true,
+        feature_disc_workspace_pagination: false,
+        feature_enable_mdm: true,
+        feature_message_menus: true,
+        feature_sli_recaps: true,
+        feature_sli_recaps_interface: true,
+        feature_slackbot_help_v2: true,
+        feature_new_message_click_logging: true,
+        feature_user_custom_status: true,
+        feature_announce_only_channels: false,
+        feature_two_step_oauth: true,
+        feature_hide_join_leave: false,
+        feature_show_join_leave_pref: true,
+        feature_update_emoji_to_v4: false,
+        feature_slim_scrollbar: false,
+        feature_i18n_emoji: false,
+        feature_sli_briefing: true,
+        feature_sli_channel_insights: false,
+        feature_platform_disable_rtm: true,
+        feature_scrollback_half_measures: true,
+        feature_initial_scroll_position: true,
+        feature_calc_unread_minimums: true,
+        feature_notif_prefs_overhaul: true,
+        feature_react_messages: false,
+        feature_enterprise_loading_state: false,
+        feature_api_admin_page: true,
+        feature_api_admin_page_not_ent: false,
+        feature_imgproxy_multicloud: false,
+        feature_app_permissions_api_site: false,
+        feature_app_index: false,
+        feature_untangle_app_directory_templates: false,
+        feature_scim_profile_fields: true,
+        feature_ms_msg_handlers_profiling: true,
+        feature_ms_latest: false,
+        feature_no_preload_video: true,
+        feature_react_emoji_picker_frecency: false,
+        feature_one_rebuild_per_animation_frame: false,
+        feature_disable_history_prefetch: false,
+        feature_async_queue: true,
+        feature_app_space: true,
+        feature_app_space_permissions_tab: false,
+        feature_queue_metrics: false,
+        feature_stop_loud_channel_mentions: true,
+        feature_message_input_byte_limit: false,
+        feature_perfectrics: false,
+        feature_automated_perfectrics: false,
+        feature_retire_team_site_directory: false,
+        feature_link_buttons: false,
+        feature_nudge_team_creators: false,
+        feature_onedrive_picker: false,
+        feature_lazy_pins: true,
+        feature_lazy_shared_files: true,
+        feature_aaa_app_dir: true,
+        feature_quest_onboarding: false,
+        feature_less_accessible_id_fetching: false,
+        feature_delete_team_and_apps: false,
+        feature_email_forwarding: false,
+        feature_pjpeg: false,
+        feature_apps_manage_permissions_scope_changes: false,
+        feature_app_dir_only_default_true: false,
+
+        client_logs: {"0":{"numbers":[0],"user_facing":false},"@scott":{"numbers":[2,4,37,58,67,141,142,389,481,488,529,667,773,808,888,999],"owner":"@scott"},"@eric":{"numbers":[2,23,47,48,72,73,82,91,93,96,365,438,552,777,794],"owner":"@eric"},"2":{"owner":"@scott \/ @eric","numbers":[2],"user_facing":false},"4":{"owner":"@scott","numbers":[4],"user_facing":false},"5":{"channels":"#dhtml","numbers":[5],"user_facing":false},"23":{"owner":"@eric","numbers":[23],"user_facing":false},"sounds":{"owner":"@scott","name":"sounds","numbers":[37]},"37":{"owner":"@scott","name":"sounds","numbers":[37],"user_facing":true},"47":{"owner":"@eric","numbers":[47],"user_facing":false},"48":{"owner":"@eric","numbers":[48],"user_facing":false},"Message History":{"owner":"@scott","name":"Message History","numbers":[58]},"58":{"owner":"@scott","name":"Message History","numbers":[58],"user_facing":true},"67":{"owner":"@scott","numbers":[67],"user_facing":false},"72":{"owner":"@eric","numbers":[72],"user_facing":false},"73":{"owner":"@eric","numbers":[73],"user_facing":false},"82":{"owner":"@eric","numbers":[82],"user_facing":false},"@shinypb":{"owner":"@shinypb","numbers":[88,1000,1989,1990,1991,1996]},"88":{"owner":"@shinypb","numbers":[88],"user_facing":false},"91":{"owner":"@eric","numbers":[91],"user_facing":false},"93":{"owner":"@eric","numbers":[93],"user_facing":false},"96":{"owner":"@eric","numbers":[96],"user_facing":false},"@steveb":{"owner":"@steveb","numbers":[99]},"99":{"owner":"@steveb","numbers":[99],"user_facing":false},"Channel Marking (MS)":{"owner":"@scott","name":"Channel Marking (MS)","numbers":[141]},"141":{"owner":"@scott","name":"Channel Marking (MS)","numbers":[141],"user_facing":true},"Channel Marking (Client)":{"owner":"@scott","name":"Channel Marking (Client)","numbers":[142]},"142":{"owner":"@scott","name":"Channel Marking (Client)","numbers":[142],"user_facing":true},"365":{"owner":"@eric","numbers":[365],"user_facing":false},"389":{"owner":"@scott","numbers":[389],"user_facing":false},"438":{"owner":"@eric","numbers":[438],"user_facing":false},"@rowan":{"numbers":[444,666],"owner":"@rowan"},"444":{"owner":"@rowan","numbers":[444],"user_facing":false},"481":{"owner":"@scott","numbers":[481],"user_facing":false},"488":{"owner":"@scott","numbers":[488],"user_facing":false},"529":{"owner":"@scott","numbers":[529],"user_facing":false},"552":{"owner":"@eric","numbers":[552],"user_facing":false},"dashboard":{"owner":"@ac \/ @bruce \/ @kylestetz \/ @nic \/ @rowan","channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666]},"@ac":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@ac"},"@bruce":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@bruce"},"@kylestetz":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@kylestetz"},"@nic":{"channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"owner":"@nic"},"666":{"owner":"@ac \/ @bruce \/ @kylestetz \/ @nic \/ @rowan","channels":"#devel-enterprise-fe, #feat-enterprise-dash","name":"dashboard","numbers":[666],"user_facing":false},"667":{"owner":"@scott","numbers":[667],"user_facing":false},"773":{"owner":"@scott","numbers":[773],"user_facing":false},"777":{"owner":"@eric","numbers":[777],"user_facing":false},"794":{"owner":"@eric","numbers":[794],"user_facing":false},"Client Responsiveness":{"owner":"@scott","name":"Client Responsiveness","user_facing":false,"numbers":[808]},"808":{"owner":"@scott","name":"Client Responsiveness","user_facing":false,"numbers":[808]},"Message Pane Scrolling":{"owner":"@scott","name":"Message Pane Scrolling","numbers":[888]},"888":{"owner":"@scott","name":"Message Pane Scrolling","numbers":[888],"user_facing":true},"999":{"owner":"@scott","numbers":[999],"user_facing":false},"1000":{"owner":"@shinypb","numbers":[1000],"user_facing":false},"Members":{"owner":"@fearon","name":"Members","numbers":[1975]},"@fearon":{"owner":"@fearon","name":"Members","numbers":[1975,98765]},"1975":{"owner":"@fearon","name":"Members","numbers":[1975],"user_facing":true},"lazy loading":{"owner":"@shinypb","channels":"#devel-flannel","name":"lazy loading","numbers":[1989]},"1989":{"owner":"@shinypb","channels":"#devel-flannel","name":"lazy loading","numbers":[1989],"user_facing":true},"thin_channel_membership":{"owner":"@shinypb","channels":"#devel-infrastructure","name":"thin_channel_membership","numbers":[1990]},"1990":{"owner":"@shinypb","channels":"#devel-infrastructure","name":"thin_channel_membership","numbers":[1990],"user_facing":true},"stats":{"owner":"@shinypb","channels":"#team-infrastructure","name":"stats","numbers":[1991]},"1991":{"owner":"@shinypb","channels":"#team-infrastructure","name":"stats","numbers":[1991],"user_facing":true},"ms":{"owner":"@shinypb","name":"ms","numbers":[1996]},"1996":{"owner":"@shinypb","name":"ms","numbers":[1996],"user_facing":true},"shared_channels_connection":{"owner":"@jim","name":"shared_channels_connection","numbers":[1999]},"@jim":{"owner":"@jim","name":"shared_channels_connection","numbers":[1999]},"1999":{"owner":"@jim","name":"shared_channels_connection","numbers":[1999],"user_facing":false},"dnd":{"owner":"@patrick","channels":"dhtml","name":"dnd","numbers":[2002]},"@patrick":{"owner":"@patrick","channels":"dhtml","name":"dnd","numbers":[2002,2003,2004,2005]},"2002":{"owner":"@patrick","channels":"dhtml","name":"dnd","numbers":[2002],"user_facing":true},"2003":{"owner":"@patrick","channels":"dhtml","numbers":[2003],"user_facing":false},"Threads":{"owner":"@patrick","channels":"#feat-threads, #devel-threads","name":"Threads","numbers":[2004]},"2004":{"owner":"@patrick","channels":"#feat-threads, #devel-threads","name":"Threads","numbers":[2004],"user_facing":true},"2005":{"owner":"@patrick","numbers":[2005],"user_facing":false},"mc_sibs":{"name":"mc_sibs","numbers":[9999]},"9999":{"name":"mc_sibs","numbers":[9999],"user_facing":false},"98765":{"owner":"@fearon","numbers":[98765],"user_facing":false},"@ainjii":{"owner":"@ainjii","numbers":[8675309]},"8675309":{"owner":"@ainjii","numbers":[8675309],"user_facing":false},"@monty":{"owner":"@monty","numbers":[6532]},"6532":{"owner":"@monty","numbers":[6532],"user_facing":false}},
+
+
+        img: {
+            app_icon: 'https://a.slack-edge.com/272a/img/slack_growl_icon.png'
+        },
+        page_needs_custom_emoji: false,
+        page_needs_team_profile_fields: false,
+        page_needs_enterprise: false	};
+
+
+
+
+
+
+    // i18n locale map (eg: maps Slack `ja-jp` to ZD `ja`)
+    boot_data.slack_to_zd_locale = {"en-us":"en-us","fr-fr":"fr-fr","de-de":"de","es-es":"es","ja-jp":"ja"};
+
+    // client boot data
+
+
+
+
+
+
+    //-->
+</script>
+
+
+
+
+
+
+
+
+<!-- output_js "core" -->
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/emoji.1ededa120e6a9042a904.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/rollup-core_required_libs.67105388c39efeb0bd21.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/rollup-core_required_ts.6e9c2c07e0610f2d492c.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/TS.web.456221fdf47c5a10d27e.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+
+<!-- output_js "core_web" -->
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/rollup-core_web.490f831ef88d6d238945.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+
+<!-- output_js "secondary" -->
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/TS.web.pricing.944eceb1fb5b18cc8fa9.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/rollup-secondary_a_required.7c09e770596035e8ef86.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/rollup-secondary_b_required.6eff7bc8cea538e06e3b.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+
+<!-- output_js "application" -->
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/application.b7fd87b24de95d85a5f1.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+
+
+
+<!-- output_js "regular" -->
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/carousel_wol.a371fa42cabf67c12610.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/sticky_nav.b0b6e4c2ac94cb46c012.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+<script type="text/javascript" src="https://a.slack-edge.com/bv1-1/footer.08e4de355c4b0d02e3e6.min.js" crossorigin="anonymous" onload="window._cdn && _cdn.ok(this, arguments)" onerror="window._cdn && _cdn.failed(this, arguments)"></script>
+
+
+<script type="text/javascript">
+</script>
+
+<script type="text/javascript">
+
+
+    TS.web.pricing.credits = 0;
+    TS.web.pricing.members = 5;
+    TS.web.pricing.free_plan_cost = "\u20ac0";
+    TS.web.pricing.bindUI();
+
+
+    TS.ui.tabs.create($('#tabmenu'), {'default_tab': 'slack-for-teams'});
+
+    /* --- Add clogs 2.0 to pricing ctas --- */
+    window.clog_step = 'pricing_page_logged_out';
+    window.has_plan = false;
+
+    // For the pricing page paid feature banner experiment clogs
+    var url_param_map = TS.utility.url.queryStringParse(window.location.search.substring(1));
+    var paid_feature = "";
+    var paid_feature_and_in_exp = "";
+
+
+    // if the url has a paid feature param
+    if (paid_feature) {
+        // Clean up the url after we've grabbed the params
+        window.history.replaceState( {}, 'Pricing', '/pricing');
+    }
+
+    /* 2.0 page impression */
+    TS.clog.track('GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'impression' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+
+    /* Paid feature banners impression */
+    if (paid_feature_and_in_exp) {
+        TS.clog.track('GROWTH_PRICING', { pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: 'PRICING_PAGE_BANNER_' + url_param_map.paid_feature, action: 'impression' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+    }
+
+    /* 2.0 clicks */
+    TS.clog.trackClick('button.create_free', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'create_team' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+    TS.clog.trackClick('a.learn_more_free', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'learn_more_free' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+
+    TS.clog.trackClick('button.buy_std', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'upgrade_standard' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+    TS.clog.trackClick('button.upgrade_std', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'upgrade_standard' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+    TS.clog.trackClick('a.learn_more_std', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'learn_more_standard' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+
+    TS.clog.trackClick('button.buy_plus', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'upgrade_plus' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+    TS.clog.trackClick('button.upgrade_plus', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'upgrade_plus' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+    TS.clog.trackClick('a.learn_more_plus', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'learn_more_plus' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+
+    TS.clog.trackClick('a.contact_enterprise', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'enterprise_contact' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+    TS.clog.trackClick('a.learn_more_enterprise', 'GROWTH_PRICING', { has_plan: window.has_plan, pay_prod_cur: window.pay_prod_cur, contexts: { ui_context: { step: clog_step, action: 'click', ui_element: 'learn_more_enterprise' }, referring_ui_context: { step: url_param_map.ui_step, ui_element: url_param_map.ui_element } } });
+
+
+</script>
+
+
+<script type="text/javascript">TS.boot(boot_data);</script>
+
+<style>.color_9f69e7:not(.nuc) {color:#9F69E7;}.color_4bbe2e:not(.nuc) {color:#4BBE2E;}.color_e7392d:not(.nuc) {color:#E7392D;}.color_3c989f:not(.nuc) {color:#3C989F;}.color_674b1b:not(.nuc) {color:#674B1B;}.color_e96699:not(.nuc) {color:#E96699;}.color_e0a729:not(.nuc) {color:#E0A729;}.color_684b6c:not(.nuc) {color:#684B6C;}.color_5b89d5:not(.nuc) {color:#5B89D5;}.color_2b6836:not(.nuc) {color:#2B6836;}.color_99a949:not(.nuc) {color:#99A949;}.color_df3dc0:not(.nuc) {color:#DF3DC0;}.color_4cc091:not(.nuc) {color:#4CC091;}.color_9b3b45:not(.nuc) {color:#9B3B45;}.color_d58247:not(.nuc) {color:#D58247;}.color_bb86b7:not(.nuc) {color:#BB86B7;}.color_5a4592:not(.nuc) {color:#5A4592;}.color_db3150:not(.nuc) {color:#DB3150;}.color_235e5b:not(.nuc) {color:#235E5B;}.color_9e3997:not(.nuc) {color:#9E3997;}.color_53b759:not(.nuc) {color:#53B759;}.color_c386df:not(.nuc) {color:#C386DF;}.color_385a86:not(.nuc) {color:#385A86;}.color_a63024:not(.nuc) {color:#A63024;}.color_5870dd:not(.nuc) {color:#5870DD;}.color_ea2977:not(.nuc) {color:#EA2977;}.color_50a0cf:not(.nuc) {color:#50A0CF;}.color_d55aef:not(.nuc) {color:#D55AEF;}.color_d1707d:not(.nuc) {color:#D1707D;}.color_43761b:not(.nuc) {color:#43761B;}.color_e06b56:not(.nuc) {color:#E06B56;}.color_8f4a2b:not(.nuc) {color:#8F4A2B;}.color_902d59:not(.nuc) {color:#902D59;}.color_de5f24:not(.nuc) {color:#DE5F24;}.color_a2a5dc:not(.nuc) {color:#A2A5DC;}.color_827327:not(.nuc) {color:#827327;}.color_3c8c69:not(.nuc) {color:#3C8C69;}.color_8d4b84:not(.nuc) {color:#8D4B84;}.color_84b22f:not(.nuc) {color:#84B22F;}.color_4ec0d6:not(.nuc) {color:#4EC0D6;}.color_e23f99:not(.nuc) {color:#E23F99;}.color_e475df:not(.nuc) {color:#E475DF;}.color_619a4f:not(.nuc) {color:#619A4F;}.color_a72f79:not(.nuc) {color:#A72F79;}.color_7d414c:not(.nuc) {color:#7D414C;}.color_aba727:not(.nuc) {color:#ABA727;}.color_965d1b:not(.nuc) {color:#965D1B;}.color_4d5e26:not(.nuc) {color:#4D5E26;}.color_dd8527:not(.nuc) {color:#DD8527;}.color_bd9336:not(.nuc) {color:#BD9336;}.color_e85d72:not(.nuc) {color:#E85D72;}.color_dc7dbb:not(.nuc) {color:#DC7DBB;}.color_bc3663:not(.nuc) {color:#BC3663;}.color_9d8eee:not(.nuc) {color:#9D8EEE;}.color_8469bc:not(.nuc) {color:#8469BC;}.color_73769d:not(.nuc) {color:#73769D;}.color_b14cbc:not(.nuc) {color:#B14CBC;}</style>
+
+<!-- slack-www-hhvm-0e7892d97832712de / 2017-07-15 09:40:07 / v24d68642179c899f615a98dcd7d705ec2a428a59 / B:H -->
+
+
+</body>
+</html>
