@@ -160,42 +160,83 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 	color: #232323;
 }
-h1 {
-	font-size: 50px;
-	line-height: 60px;
-	margin-top: 0;
-	margin-bottom: 24px;
-}
-h2 {
+
+@media only screen and (max-width: 1080px) {
+	h1 {
+		font-size: 40px;
+		line-height: 60px;
+		margin-top: 0;
+		margin-bottom: 12px;
+		}
+	h2 {
 	font-size: 22px;
 	line-height: 26px;
 	margin-top: 0;
 	margin-bottom: 36px;
 }
-h3 {
+	h3 {
 	font-size: 20px;
 	line-height: 26px;
 	margin-top: 0;
 	margin-bottom: 36px;
 	font-weight: 500;
 }
-h4 {
+	h4 {
 	font-size: 16px;
 	line-height: 24px;
 	margin-top: 0;
 	margin-bottom: 24px;
 }
-h5 {
+	h5 {
 	font-size: 15px;
 	line-height: 32px;
 	margin-top: 0;
 	margin-bottom: 24px;
 }
-h6 {
+	h6 {
 	font-size: 14px;
 	line-height: 32px;
 	font-weight: 500;
 }
+}@media only screen and (min-width: 1081px) {
+	h1 {
+		font-size: 50px;
+		line-height: 60px;
+		margin-top: 0;
+		margin-bottom: 24px;
+	}
+	h2 {
+		font-size: 22px;
+		line-height: 26px;
+		margin-top: 0;
+		margin-bottom: 36px;
+	}
+	h3 {
+		font-size: 20px;
+		line-height: 26px;
+		margin-top: 0;
+		margin-bottom: 36px;
+		font-weight: 500;
+	}
+	h4 {
+		font-size: 16px;
+		line-height: 24px;
+		margin-top: 0;
+		margin-bottom: 24px;
+	}
+	h5 {
+		font-size: 15px;
+		line-height: 32px;
+		margin-top: 0;
+		margin-bottom: 24px;
+	}
+	h6 {
+		font-size: 14px;
+		line-height: 32px;
+		font-weight: 500;
+	}
+}
+
 h3.small-margin-bottom {
 	margin-bottom: 6px;
 }
@@ -257,14 +298,14 @@ h3.small-margin-bottom {
     .info ul.info-list li {border-bottom: 1px solid #efefef;border-left: 1px solid #efefef;}
     .info ul.info-list li .inf{width:100%;border-right:0;border-left:1px solid #efefef;border-bottom:1px solid #efefef;}
 }
-
+/*
 @media (width: 1080px) {
 	.container1{padding-right:8px;padding-left:8px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container1{width:750px}}@media (min-width:992px){.container1{width:970px}}@media (min-width:1200px){.container1{width:1170px}}.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 }
 @media screen {
 	.container1{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container1{width:750px}}@media (min-width:992px){.container1{width:970px}}@media (min-width:1200px){.container1{width:1170px}}.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
 }
-
+*/
 /* ==================================================================================================
    								      02 - Кнопки | Buttons
    ================================================================================================== */
