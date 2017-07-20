@@ -39,24 +39,26 @@
 - Info Customization
 
 ## Цветовая палитра |  Color Palette.
+[Material Palette](https://material.io) на сайте: https://material.io
+Color Theme: Blue, Green, Orange, yellow.
+В процессе дизайна и прототипирования максимально придерживаемся Material Guidelines. Использование Flat палитры не запрещается.
 
-
-## Шрифт | Fonts
-
+## Шрифты | Fonts
+В работе используем следующие Web шрифты: 
+- [Font Google Roboto](https://google.fonts)
+- [Font Awesome Icon 4.7](https://fontawesome.io)
+- [Font Ionic Icon](https://ionicons.io)
 
 ## Аватар | Avatar
-
+![My Avatar](https://mishapivo.githab.io/img/avatar.gpg)
 
 ## Имя | Name
-
+Aqua Farm - Интернет 
 ## Слоган | Миссия | Ценности | Вижин | Цели
-
 
 ## Элементы
 
 ## CSS файл - Styleguide
-
-
 
 ## Basic Setup
 
@@ -73,20 +75,81 @@
 Вы должны заполнить некоторую информацию на `_config.yml`, чтобы настроить свой сайт.
 
 ```
-# Настройки сайта
-description: Блог о ....
-baseurl: "" # поддомен сайта, например: /blog/
-url: "http://localhost:3000" # the base hostname & protocol for your site 
+# Настройка конфигуратора для развёртывания сайта на GitHub Pages
+# Конфигурационный файл для сайта: https//mishapivo.github.io
+# Из шаблона:  Настройка для развёртывания на WebStorm | Ruby + Jekkyl | Node.js + Hexo
+# Михаил Пивоваренко | Персональная страница, биография, опыт, навыки, образование и портфолио!.
+# IDE: WebStorm | Temlate: Tanya
+# General Site Setting | Основные настройки сайта:
 
-# Персональные настройки
-username: Lorem Ipsum
-user_description: Anon Developer at Lorem Ipsum Dolor
-user_title: Anon Developer
-email: mishapivo@gmail.com
-twitter_username: mishapivo
-github_username:  mishapivo
-gplus_username:  mishapivo
-disqus_username: lorem_ipsum
+# Site - Сайт
+title: Mikhail Pivovarenko                # Настройки сайта | Заголовок
+subtitle: Developer & Web Designer        # Настройки сайта | Подзаголовок
+description: Freelance                    # Настройки сайта | Описание сайта
+author: Mikhail Pivovarenko               # Настройки сайта | Автор
+language: ru                              # Настройки сайта | Язык сайта
+timezone: Europe/Kiev                     # Настройки сайта | Временная зона
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+## Если ваш сайт помещен в подкаталог, установите в url: 'http://yoursite.com/subdir' и установите в root: '/subdir/'
+url: http://mishapivo.github.io           # Настройки сайта | Полный URL адресс сайта
+root: /                                   # Настройки сайта | Установка базовой папки/директории сайта
+# permalink: :year/:month/:day/:title/
+# permalink_defaults:
+
+# Directory
+# source_dir: source
+# public_dir: public
+# tag_dir: tags
+# archive_dir: archives
+# category_dir: categories
+# code_dir: downloads/code
+# i18n_dir: :lang
+# skip_render:
+
+# Writing - Написание поста
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+
+# Category & Tag - Категории & Теги
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format - Формат даты и времени
+## Hexo uses Moment.js to parse and display date | Hexo использует Moment.js для синтаксического анализа и отображения даты
+## You can customize the date format as defined in | Вы можете настроить формат даты, определенный в
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD                                   # Формат даты
+time_format: HH:mm:ss                                     # Формат фремени
+
+# Pagination - Пагинация
+## Set per_page to 0 to disable pagination. - Установика per_page на 0 - отключает пагинацию.
+per_page: 15                                              # Количество страниц
+pagination_dir: page                                      # Способ пагинации
+
+# Extensions - Расширения
+## Plugins: https://hexo.io/plugins/                      #
+## Themes: https://hexo.io/themes/                        #
+# theme: material
+
+# Deployment - Развёртывание
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type:
 ```
 
 **Не забудьте изменить свой baseurl, прежде чем строить свой сайт!**
