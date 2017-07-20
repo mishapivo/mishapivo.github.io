@@ -1,16 +1,23 @@
-# Site settings
-# Site
-title: Mikhail Pivovarenko
-subtitle: Developer & Web Designer
-description: Freelance
-author: Mikhail Pivovarenko
-language: ru
-timezone: Europe/Kiev
+# Настройка конфигуратора для развёртывания сайта на GitHub Pages
+# Конфигурационный файл для сайта: https//mishapivo.github.io
+# Из шаблона:  Настройка для развёртывания на WebStorm | Ruby + Jekkyl | Node.js + Hexo
+# Михаил Пивоваренко | Персональная страница, биография, опыт, навыки, образование и портфолио!.
+# IDE: WebStorm | Temlate: Tanya
+# General Site Setting | Основные настройки сайта:
+
+# Site - Сайт
+title: Mikhail Pivovarenko                # Настройки сайта | Заголовок
+subtitle: Developer & Web Designer        # Настройки сайта | Подзаголовок
+description: Freelance                    # Настройки сайта | Описание сайта
+author: Mikhail Pivovarenko               # Настройки сайта | Автор
+language: ru                              # Настройки сайта | Язык сайта
+timezone: Europe/Kiev                     # Настройки сайта | Временная зона
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://mishapivo.github.io
-root: /
+## Если ваш сайт помещен в подкаталог, установите в url: 'http://yoursite.com/subdir' и установите в root: '/subdir/'
+url: http://mishapivo.github.io           # Настройки сайта | Полный URL адресс сайта
+root: /                                   # Настройки сайта | Установка базовой папки/директории сайта
 # permalink: :year/:month/:day/:title/
 # permalink_defaults:
 
@@ -24,7 +31,7 @@ root: /
 # i18n_dir: :lang
 # skip_render:
 
-# Writing
+# Writing - Написание поста
 new_post_name: :title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
@@ -40,29 +47,29 @@ highlight:
   auto_detect: false
   tab_replace:
 
-# Category & Tag
+# Category & Tag - Категории & Теги
 default_category: uncategorized
 category_map:
 tag_map:
 
-# Date / Time format
-## Hexo uses Moment.js to parse and display date
-## You can customize the date format as defined in
+# Date / Time format - Формат даты и времени
+## Hexo uses Moment.js to parse and display date | Hexo использует Moment.js для синтаксического анализа и отображения даты
+## You can customize the date format as defined in | Вы можете настроить формат даты, определенный в
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: YYYY-MM-DD
-time_format: HH:mm:ss
+date_format: YYYY-MM-DD                                   # Формат даты
+time_format: HH:mm:ss                                     # Формат фремени
 
-# Pagination
-## Set per_page to 0 to disable pagination
-per_page: 15
-pagination_dir: page
+# Pagination - Пагинация
+## Set per_page to 0 to disable pagination. - Установика per_page на 0 - отключает пагинацию.
+per_page: 15                                              # Количество страниц
+pagination_dir: page                                      # Способ пагинации
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
+# Extensions - Расширения
+## Plugins: https://hexo.io/plugins/                      #
+## Themes: https://hexo.io/themes/                        #
 # theme: material
 
-# Deployment
+# Deployment - Развёртывание
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type:

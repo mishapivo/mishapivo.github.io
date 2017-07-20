@@ -1,64 +1,77 @@
-# robotstxt.org/
+# robots.txt for https//mishapivo.github.io
 
-User-agent: *
-Disallow: /file.html
-Disallow: /papka/
+# Это настройки для Яндекса
+User-agent: Yandex                      # Поисковик
+Disallow: /!creative/                   # Иключить из поиска: директория
+Disallow: /!sample/                     # Иключить из поиска: директория
+Disallow: /!slack/                      # Иключить из поиска: директория
+Disallow: /!ui-kits/                    # Иключить из поиска: директория
+Disallow: /polyakov.md                  # Иключить из поиска: файл
+Disallow: /README.md                    # Иключить из поиска: файл
+Disallow: /README1.md                   # Иключить из поиска: файл
+Host: mishapivo.github.io               # URL адрес нашего сайта
 
-User-agent: Yandex
-Disallow: /cgi-bin
-Host: www.site.ru
+# Это настройки для Google Search Bots
+User-agent: Googlebot                   # Поисковик
+Disallow: /!creative/                   # Иключить из поиска: директория
+Disallow: /!sample/                     # Иключить из поиска: директория
+Disallow: /!slack/                      # Иключить из поиска: директория
+Disallow: /!ui-kits/                    # Иключить из поиска: директория
+Disallow: /polyakov.md                  # Иключить из поиска: файл
+Disallow: /README.md                    # Иключить из поиска: файл
+Disallow: /README1.md                   # Иключить из поиска: файл
+Sitemap: /sitemap.xml                   # Карта сайта в xml для поисковика
 
-User-agent: *
-Disallow: /cgi-bin
-
-
-
-User-agent: Googlebot
-Disallow: /cgi-bin
-Sitemap: /sitemap.xml
-
-
-
+# Это настройки для Google Image Bots
 User-agent: Googlebot-Image
-Disallow: /file.html
-Disallow: /papka/
+Disallow: /image/                       # Иключить из поиска: директория
+Disallow: /!creative/                   # Иключить из поиска: директория
+Disallow: /!sample/                     # Иключить из поиска: директория
+Disallow: /!slack/                      # Иключить из поиска: директория
+Disallow: /!ui-kits/                    # Иключить из поиска: директория
+Disallow: /polyakov.md                  # Иключить из поиска: файл
+Disallow: /README.md                    # Иключить из поиска: файл
+Disallow: /README1.md                   # Иключить из поиска: файл
 
-
-
+# Это настройки для Google Mobile Bots
 User-agent: Googlebot-Mobile
-Disallow: /file.html
-Disallow: /papka/
+Disallow: /!creative/                   # Иключить из поиска: директория
+Disallow: /!sample/                     # Иключить из поиска: директория
+Disallow: /!slack/                      # Иключить из поиска: директория
+Disallow: /!ui-kits/                    # Иключить из поиска: директория
+Disallow: /polyakov.md                  # Иключить из поиска: файл
+Disallow: /README.md                    # Иключить из поиска: файл
+Disallow: /README1.md                   # Иключить из поиска: файл
 
-
-
-User-agent: *
-Disallow: /cgi-bin
-Disallow: /wp-admin
-Disallow: /wp-includes
-Disallow: /wp-content/plugins
-Disallow: /wp-content/cache
-Disallow: /wp-content/themes
-Disallow: /trackback
-Disallow: */trackback
-Disallow: */*/trackback
-Disallow: */*/feed/*/
-Disallow: */feed
-Disallow: /*?*
-Disallow: /tag
-User-agent: Yandex
-Disallow: /cgi-bin
-Disallow: /wp-admin
-Disallow: /wp-includes
-Disallow: /wp-content/plugins
-Disallow: /wp-content/cache
-Disallow: /wp-content/themes
-Disallow: /trackback
-Disallow: */trackback
-Disallow: */*/trackback
-Disallow: */*/feed/*/
-Disallow: */feed
-Disallow: /*?*
-Disallow: /tag
-Host: mishapivo.github.io
-Sitemap: https://mishapivo.github.io/sitemap.xml.gz
-Sitemap: https://mishapivo.github.io/sitemap.xml
+# Это настройки для WordPress
+# User-agent: *
+# Disallow: /cgi-bin
+# Disallow: /wp-admin
+# Disallow: /wp-includes
+# Disallow: /wp-content/plugins
+# Disallow: /wp-content/cache
+# Disallow: /wp-content/themes
+# Disallow: /trackback
+# Disallow: */trackback
+# Disallow: */*/trackback
+# Disallow: */*/feed/*/
+# Disallow: */feed
+# Disallow: /*?*
+# Disallow: /tag
+# User-agent: Yandex
+# Disallow: /cgi-bin
+# Disallow: /wp-admin
+# Disallow: /wp-includes
+# Disallow: /wp-content/plugins
+# Disallow: /wp-content/cache
+# Disallow: /wp-content/themes
+# Disallow: /trackback
+# Disallow: */trackback
+# Disallow: */*/trackback
+# Disallow: */*/feed/*/
+# Disallow: */feed
+# Disallow: /*?*
+# Disallow: /tag
+# Host: mishapivo.github.io
+# Sitemap: https://mishapivo.github.io/sitemap.xml.gz
+# Sitemap: https://mishapivo.github.io/sitemap.xml
